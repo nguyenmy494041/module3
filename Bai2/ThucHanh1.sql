@@ -1,0 +1,32 @@
+CREATE DATABASE Bai2;
+CREATE TABLE Persons
+(	
+	Personid	int				IDENTITY(1,1)	PRIMARY KEY,
+	LastName	varchar(50)		NOT NULL,
+	FistName	varchar(50)		NOT NULL,
+	Age			int
+)
+CREATE TABLE Suppliers
+(
+	Supplier		INT				IDENTITY	NOT NULL	PRIMARY KEY,
+	SupplierName	VARCHAR(50)		NOT NULL,
+	AccountRep		VARCHAR(50)		NOT NULL	DEFAULT 'TBD'
+)
+
+CREATE TABLE Bang1
+(
+   COLUM1 int
+)
+DROP TABLE Bang1;
+
+ALTER TABLE Suppliers
+ADD Messanger VARCHAR(50);
+
+ALTER TABLE Persons
+ADD Gender VARCHAR(10) NOT NULL	DEFAULT 'Male',
+	Adress VARCHAR(50) NOT NULL;
+
+ALTER TABLE Persons
+	ALTER COLUMN Gender VARCHAR(50) ;
+ALTER TABLE Persons
+	DROP COLUMN Adress;
