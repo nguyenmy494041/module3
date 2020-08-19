@@ -1,15 +1,44 @@
-﻿@{ 
-    var employees = ViewData["employees"] as IEnumerable<WBDDemo.Models.Employee>;
+﻿@*Su dung ViewData*@
 
+@*@{
+        var employees = ViewData["employees"] as IEnumerable<WBDDemo.Models.Employee>;
+
+    }*@
+
+@*Su dung ViewBag*@
+@model IEnumerable<Employee>
+
+@{
+    //var employees = ViewBag.Employees as IEnumerable<Employee>;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Manchester United";
 }
-@foreach (var employee in employees)
-{
-    <div>
 
-        <h3>@employee.Fullname</h3>
-        <img src="@Url.Content(employee.AvatarPath)"alt="Alternate Text" />
-        <h4>@employee.Email</h4>
-        <h4>@employee.Department</h4>
-    </div>
 
-}
+
+<div class=" row">
+    @foreach (var employee in Model)
+    {
+        // 1 dong co 4 cot
+        <div class=" col-sm-3">
+
+            <div class=" card my-3">
+                <div class=" card">
+                    <div class=" card-header">
+                        <h4>@employee.Fullname</h4>
+                    </div>
+                    <img src="@Url.Content(employee.AvatarPath)" class="card-img-top" alt="Alternate Text" height="225" />
+                    <div class=" card-footer">
+
+                        @*<a href="@Url.Action("Details","Home",new { Id = employee.Id})" class="btn btn-warning ">View</a>*@
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class=" btn btn-info">View </a>
+                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@employee.Id" class=" btn btn-primary"> Edit </a>
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class=" btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
