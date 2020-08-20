@@ -26,8 +26,15 @@ using WBDDemo.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\DataPersonal\Codegym\module3\test\WBDDemo\WBDDemo\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"cf4ffed917712550557982dc1df5e2efad871735", @"/Views/Error/PageNotFound.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1fcc895be7ba332c8c7a07dfeed1ba41d4f84bc8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"41fbde1cd276355cd8856af7c70fcc517a802e86", @"/Views/_ViewImports.cshtml")]
     public class Views_Error_PageNotFound : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Home", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -74,7 +81,7 @@ using WBDDemo.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("</h2>\r\n    <hr />\r\n    <h4>Please contact administator ManchestersUntesd@gmail.com</h4>\r\n</div>\r\n<div>\r\n    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cf4ffed917712550557982dc1df5e2efad8717354677", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cf4ffed917712550557982dc1df5e2efad8717354874", async() => {
                 WriteLiteral("\r\n    Click here navigate home page\r\n    ");
             }
             );

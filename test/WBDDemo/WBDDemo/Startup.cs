@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,8 +34,16 @@ namespace WBDDemo
             //services.AddSingleton<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeRepository, SqlEmployeeRepository>();
 
+            services.AddMvc(o =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+                o.Filters.Add(new AuthorizeFilter(policy));
+            });
+
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(config.GetConnectionString("EmployeeDbConnection")));
-            //services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +61,7 @@ namespace WBDDemo
             }
             app.UseStaticFiles();
             //app.UseMvcWithDefaultRoute();
-
+            app.UseAuthentication();
             app.UseRouting();
 
             //app.UseEndpoints(endpoints =>

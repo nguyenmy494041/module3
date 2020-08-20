@@ -11,6 +11,10 @@
     <Compile Remove="Migrations\20200819103103_SeedingEmployeeData2.Designer.cs" />
     <Compile Remove="Migrations\20200819134939_AddPhoneNumberColumn.cs" />
     <Compile Remove="Migrations\20200819134939_AddPhoneNumberColumn.Designer.cs" />
+    <Compile Remove="Migrations\20200820025603_InitIdentityTables.cs" />
+    <Compile Remove="Migrations\20200820025603_InitIdentityTables.Designer.cs" />
+    <Compile Remove="Migrations\20200820150942_ExtendAspNetUserTable.cs" />
+    <Compile Remove="Migrations\20200820150942_ExtendAspNetUserTable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />

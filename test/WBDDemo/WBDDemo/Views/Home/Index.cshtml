@@ -22,18 +22,18 @@
         // 1 dong co 4 cot
         <div class=" col-sm-3">
 
-            <div class=" card my-3">
+            <div class=" card my-3 text-center" >
                 <div class=" card">
                     <div class=" card-header">
                         <h4>@employee.Fullname</h4>
                     </div>
-                    <img src="@Url.Content(employee.AvatarPath)" class="card-img-top" alt="Alternate Text" height="225" />
+                    <img src="@Url.Content(employee.AvatarPath)" class="card-img-top" alt="Alternate Text" height="225" asp-append-version="true" />
                     <div class=" card-footer">
 
                         @*<a href="@Url.Action("Details","Home",new { Id = employee.Id})" class="btn btn-warning ">View</a>*@
                         <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class=" btn btn-info">View </a>
-                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@employee.Id" class=" btn btn-primary"> Edit </a>
-                        <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class=" btn btn-danger">Delete</a>
+                        @*<a asp-controller="Home" asp-action="Edit" asp-route-id="@employee.Id" class=" btn btn-primary"> Edit </a>
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class=" btn btn-danger">Delete</a>*@
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using WBDDemo.ViewModels;
 
 namespace WBDDemo.Controllers
 {
+    //[Authorize]
     public class HomeController:Controller
     {
         private IEmployeeRepository employeeRepository;
@@ -20,6 +22,7 @@ namespace WBDDemo.Controllers
             this.employeeRepository = employeeRepository;
             this.webHostEnvironment = webHostEnvironment;
         }
+        [AllowAnonymous]
         public ViewResult Index()
         {
             
@@ -27,6 +30,7 @@ namespace WBDDemo.Controllers
 
             return View(employee);
         }
+        [AllowAnonymous]
         public ViewResult Details(int? id)
         {
             //ViewBag.Employees = employeeRepository.Get(id);
@@ -126,14 +130,18 @@ namespace WBDDemo.Controllers
                         model.Avata.CopyTo(fs);
                     }
                     employee.AvatarPath = $"~/images/{fileName}";
-                }               
+                    if (model.AvataPath != null && model.AvataPath != "~/images/no_image.jfif")
+                    {
+                        string deleteFolder = Path.Combine(webHostEnvironment.WebRootPath,model.AvataPath.Substring(2));
+                        System.IO.File.Delete(deleteFolder);
+                    }
+                }
                 var editItem = employeeRepository.Edit(employee);
                 if (editItem != null)
                 {
                     return RedirectToAction("Details", "Home", new { id = employee.Id });
                 }
-            }           
-           
+            }
             return View();
         }
         public IActionResult Delete(int id)

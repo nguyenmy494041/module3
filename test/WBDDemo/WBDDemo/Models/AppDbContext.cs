@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WBDDemo.Models
 {
-    public class AppDbContext: DbContext
+    public class AppDbContext: IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -15,6 +16,7 @@ namespace WBDDemo.Models
         public DbSet<Employee> Employees { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Employee>().HasData(
                 new Employee() { Id = 1, Fullname = "Chicharito", Email = "hatdaunho@gmail.com", Department = Dept.FW, AvatarPath = "~/images/chicharito.jfif" },
                 new Employee() { Id = 2, Fullname = "PaulScholes", Email = "hoangtutocvang@gmail.com", Department = Dept.MF, AvatarPath = "~/images/no_image.jfif" },
