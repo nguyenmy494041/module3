@@ -30,7 +30,7 @@ namespace WBDDemo.Controllers
 
             return View(employee);
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ViewResult Details(int? id)
         {
             //ViewBag.Employees = employeeRepository.Get(id);

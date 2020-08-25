@@ -1,9 +1,9 @@
 ﻿
-@model  HomeDetailsViewModel
+@model HomeDetailsViewModel
 @{
     //Layout = "~/Views/Shared/_layout.cshtml";
     ViewBag.Title = Model.TitleName;
-    var avatePath = Model.Employee.AvatarPath??"no_avata.jfif";
+    var avatePath = Model.Employee.AvatarPath ?? "no_avata.jfif";
     //var employee = ViewBag.Employees as Employee;
 
 }
@@ -17,20 +17,35 @@
 
             <div class=" card-body text-left">
                 <img src="@Url.Content(@avatePath)" class="card-img-top" alt="Alternate Text" />
-                <h5>Employee Id: @Model.Employee.Id</h5>
+                <h5 class=" mt-3">Employee Id: @Model.Employee.Id</h5>
                 <h5>Email: @Model.Employee.Email</h5>
                 <h5>Department: @Model.Employee.Department</h5>
             </div>
-            
+
             <div class=" card-footer text-center">
-                <a asp-conteoller="Home" asp-action="Index" class=" btn btn-warning" style="width:20%">Back</a>
-                <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Employee.Id" class=" btn btn-primary"style="width:20%">Edit</a>
-                <a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.Employee.Id" class=" btn btn-danger"style="width:20%">Delete</a>
-
+                <a asp-conteoller="Home" asp-action="Index" class=" btn btn-outline-warning" style="width:20%">Back</a>
+                <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Employee.Id" class=" btn btn-outline-primary" style="width:20%">Edit</a>
+                @*<a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.Employee.Id" class=" btn btn-danger" style="width:20%">Delete</a>*@
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal">
+                    Delete
+                </button>
             </div>
-          
         </div>
-
-
+    </div>
+</div>
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ">
+                <h2 class="modal-title" style="margin: auto;color: red">Delete Employee</h2>
+            </div>
+            <div class="modal-body">
+                <h6> Are you sure you want to delete Employee "@Model.Employee.Fullname" ?</h6>
+            </div>
+            <div class="modal-footer">
+                <a asp-controller="Home" asp-action="Delete" asp-route-id="@Model.Employee.Id" class="btn btn-danger">Yes</a>
+                <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Role>
+@{
+    ViewBag.Title = "Role Management";
+}
+<h3>@ViewBag.Title</h3>
+
+<a asp-controller="Role" asp-action="Create" class=" btn btn-outline-success">Create Role</a>
+<table class=" table table-bordered table-hover mt-3">
+    <thead class=" thead-light">
+        <tr>
+            <th>Id</th>
+            <th>Role Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.RoleId</td>
+                    <td>@item.RoleName</td>
+                    <td>
+                        <a asp-controller="Role" asp-action="Edit" asp-route-id="@item.RoleId" class="btn btn-outline-primary" style="width:35%">Edit</a>
+                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal">
+                           Delete
+                        </button>
+
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">                           
+                                    <div class="modal-header ">
+                                        <h2 class="modal-title" style="margin: auto;color: red">Delete Role</h2>                                        
+                                    </div>                                  
+                                    <div class="modal-body">
+                                        <h6> Are you sure you want to delete Role "@item.RoleName" ?</h6>
+                                    </div>                                    
+                                    <div class="modal-footer">
+                                        <a asp-controller="Role" asp-action="Delete" asp-route-id="@item.RoleId" class="btn btn-danger">Yes</a>
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*<a asp-controller="Role" asp-action="Delete" asp-route-id="@item.RoleId" class="btn btn-danger" style="width:35%">Delete</a>*@
+                    </td>
+
+                </tr>
+                
+            }
+        }
+    </tbody>
+</table>
+
+
+

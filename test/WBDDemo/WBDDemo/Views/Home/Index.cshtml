@@ -1,15 +1,8 @@
-﻿@*Su dung ViewData*@
-
-@*@{
-        var employees = ViewData["employees"] as IEnumerable<WBDDemo.Models.Employee>;
-
-    }*@
-
-@*Su dung ViewBag*@
+﻿
 @model IEnumerable<Employee>
 
 @{
-    //var employees = ViewBag.Employees as IEnumerable<Employee>;
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Manchester United";
 }
@@ -31,7 +24,7 @@
                     <div class=" card-footer">
 
                         @*<a href="@Url.Action("Details","Home",new { Id = employee.Id})" class="btn btn-warning ">View</a>*@
-                        <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class=" btn btn-info">View </a>
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class=" btn btn-outline-info">View </a>
                         @*<a asp-controller="Home" asp-action="Edit" asp-route-id="@employee.Id" class=" btn btn-primary"> Edit </a>
                         <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class=" btn btn-danger">Delete</a>*@
                     </div>

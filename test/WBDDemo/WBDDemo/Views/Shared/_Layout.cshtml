@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Css/formdelete.css" rel="stylesheet" />
     <script src="~/lib/jquery/jquery.js"></script>
     <script src="~/lib/jquery-validate/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
@@ -34,6 +35,17 @@
 
                             <a asp-controller="Home" asp-action="Create" class="nav-link">Create</a>
                         </li>
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+
+                                <a asp-controller="Role" asp-action="Index" class="nav-link">Role</a>
+                            </li>
+                            <li class="nav-item">
+
+                                <a asp-controller="User" asp-action="Index" class="nav-link">User</a>
+                            </li>
+                        }
 
                     </ul>
                     <ul class="navbar-nav ml-auto">
