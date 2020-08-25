@@ -1,0 +1,107 @@
+﻿@model TaiKhoan
+@{
+    ViewBag.Title = "Tạo mới tài khoản";
+}
+
+<form asp-controller="Home" asp-action="TaoTaiKhoan" method="post" class=" mt-4">
+    @*<div asp-validation-summary="None" class=" text-danger"></div>*@
+    <div class=" row form-group">
+        <div class="col-sm-2">
+            <label asp-for=" HoTen"></label>
+        </div>
+        <div class=" col-sm-10">
+            <input asp-for=" HoTen" class=" form-control" />
+            <span asp-validation-for=" HoTen" class=" text-danger"></span>
+        </div>
+    </div>
+    <div class=" row form-group">
+        <div class="col-sm-2">
+            <label asp-for=" Email"></label>
+        </div>
+        <div class=" col-sm-10">
+            <input asp-for=" Email" class=" form-control" />
+            <span asp-validation-for=" Email" class=" text-danger"></span>
+        </div>
+    </div>
+    <div class=" row form-group">
+        <div class="col-sm-2">
+            <label asp-for=" SoDienThoai"></label>
+        </div>
+        <div class=" col-sm-10">
+            <input asp-for=" SoDienThoai" class=" form-control" />
+            <span asp-validation-for=" SoDienThoai" class=" text-danger"></span>
+        </div>
+    </div>
+
+    <div class=" row form-group">
+        <div class="col-sm-2">
+            <label asp-for=" MatKhau"></label>
+        </div>
+        <div class=" col-sm-10">
+            <input asp-for=" MatKhau" class=" form-control" />
+            <span asp-validation-for=" MatKhau" class=" text-danger"></span>
+        </div>
+    </div>
+
+    <div class=" row form-group">
+        <div class="col-sm-2">
+            <label asp-for=" XacnhanMatKhau "></label>
+        </div>
+        <div class=" col-sm-10">
+            <input asp-for=" XacnhanMatKhau" class=" form-control" />
+            <span asp-validation-for=" XacnhanMatKhau" class=" text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class=" row form-group">
+        <div class="col-sm-2">
+            <label asp-for="Tinh_Tp"></label>
+        </div>
+        <div class=" col-sm-10">
+            <select asp-for=" Tinh_Tp" class=" custom-select">
+                <option value="Select a departement">Select a departement</option>
+                <option value="Select">Select</option>
+            </select>
+            <span asp-validation-for=" Tinh_Tp" class=" text-danger"></span>
+        </div>
+    </div>
+
+    <div class=" row form-group">
+        <div class="col-sm-2">
+            <label asp-for="Quan_Huyen"></label>
+        </div>
+        <div class=" col-sm-10">
+            <select asp-for=" Quan_Huyen" class=" custom-select">
+                <option value="Select a departement">Select a departement</option>
+                <option value="Select">Select</option>
+            </select>
+            <span asp-validation-for=" Quan_Huyen" class=" text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class=" row form-group">
+        <div class="col-sm-2">
+            <label asp-for="Phuong_Xa"></label>
+        </div>
+        <div class=" col-sm-10">
+            <select asp-for="Phuong_Xa" class=" custom-select">
+                <option value="Select a departement">Select a departement</option>
+                <option value="Select">Select</option>
+            </select>
+            <span asp-validation-for="Phuong_Xa" class=" text-danger"></span>
+        </div>
+    </div>
+
+    @*hien thi tat ca cac loi*@
+    <div asp-validation-summary="None"></div>
+    <div class=" row form-group">
+
+        <div class=" col-sm-12">
+            <button type="submit" class=" btn btn-primary">Register</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-warning">Back</a>
+        </div>
+    </div>
+
+</form>
