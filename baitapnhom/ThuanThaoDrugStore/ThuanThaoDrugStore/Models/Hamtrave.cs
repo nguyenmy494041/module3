@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace ThuanThaoDrugStore.Models
 {
-    public class Hamtrave
+    public static class Hamtrave
     {
+        
     }
 }

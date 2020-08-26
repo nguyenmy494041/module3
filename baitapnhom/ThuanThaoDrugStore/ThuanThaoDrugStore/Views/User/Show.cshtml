@@ -1,0 +1,35 @@
+﻿
+
+@inject AppDbContext context
+@{
+    ViewData["Title"] = "Show Items";
+}
+
+
+
+<table class=" table table-bordered table-hover mt-3">
+    <thead class=" thead-light">
+        <tr>
+            <th>Id</th>
+            <th>Ho Ten</th>
+            <th>Email</th>
+            <th>Dia Chi</th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in context.Account)
+        {
+            <tr>
+                <td>@item.MaTK</td>
+                <td>@item.HoTen</td>
+                <td>@item.Email</td>
+                <td>@item.Diachi</td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+

@@ -381,3 +381,4 @@ C:\DataPersonal\Codegym\module3\baitapnhom\ThuanThaoDrugStore\ThuanThaoDrugStore
 C:\DataPersonal\Codegym\module3\baitapnhom\ThuanThaoDrugStore\ThuanThaoDrugStore\obj\Debug\netcoreapp3.1\ThuanThaoDrugStore.MvcApplicationPartsAssemblyInfo.cs
 C:\DataPersonal\Codegym\module3\baitapnhom\ThuanThaoDrugStore\ThuanThaoDrugStore\obj\Debug\netcoreapp3.1\ThuanThaoDrugStore.MvcApplicationPartsAssemblyInfo.cache
 C:\DataPersonal\Codegym\module3\baitapnhom\ThuanThaoDrugStore\ThuanThaoDrugStore\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\DataPersonal\Codegym\module3\baitapnhom\ThuanThaoDrugStore\ThuanThaoDrugStore\obj\Debug\netcoreapp3.1\Razor\Views\User\Show.cshtml.g.cs
