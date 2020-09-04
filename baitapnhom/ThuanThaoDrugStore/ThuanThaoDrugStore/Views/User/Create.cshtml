@@ -5,7 +5,6 @@
 @{
     ViewBag.Title = "Tạo mới tài khoản";
 }
-
 <h1>Đăng ký tài khoản</h1>
 <p>
     Nếu bạn đã có tài khoản trên website xin hãy đăng nhập tại <a @*href="/Account/Login"*@
@@ -39,7 +38,7 @@
             <label class=" textbold" asp-for=" SoDienThoai"></label>
         </div>
         <div class=" col-sm-10">
-            <input placeholder="Số điện thoại" asp-for=" SoDienThoai" class=" form-control" />
+            <input type="tel" placeholder="Số điện thoại" asp-for=" SoDienThoai" class=" form-control" />
             <span asp-validation-for=" SoDienThoai" class=" text-danger"></span>
         </div>
     </div>
@@ -70,7 +69,7 @@
             <label class=" textbold" asp-for="TinhTp"></label>
         </div>
         <div class=" col-sm-10">
-            <select onclick="LayQuanHuyen(this.value)" id="IdTinhThanh" asp-for=" TinhTp" class=" custom-select">
+            <select onchange="LayQuanHuyen(this.value)" id="IdTinhThanh" asp-for=" TinhTp" class=" custom-select">
               
             </select>
             <span asp-validation-for=" TinhTp" class=" text-danger"></span>
@@ -82,7 +81,7 @@
             <label class=" textbold" asp-for="QuanHuyen"></label>
         </div>
         <div class=" col-sm-10">
-            <select onclick="LayPhuongXa(this.value)" id="IdQuanHuyen" asp-for=" QuanHuyen" class=" custom-select">               
+            <select onchange="LayPhuongXa(this.value)" id="IdQuanHuyen" asp-for=" QuanHuyen" class=" custom-select">               
             </select>
             <span asp-validation-for=" QuanHuyen" class=" text-danger"></span>
         </div>
@@ -109,7 +108,7 @@
         </div>
     </div>
 
-    @*hien thi tat ca cac loi*@
+   
     <div asp-validation-summary="None"></div>
     <div class=" row form-group">
 

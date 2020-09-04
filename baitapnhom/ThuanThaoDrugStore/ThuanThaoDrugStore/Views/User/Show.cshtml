@@ -7,7 +7,7 @@
 
 
 
-<table class=" table table-bordered table-hover mt-3">
+<table id="dataTable" class=" table table-bordered table-hover mt-3">
     <thead class=" thead-light">
         <tr>
             <th>Id</th>
@@ -33,3 +33,10 @@
     </tbody>
 </table>
 
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').dataTable();
+        });
+    </script>
+}

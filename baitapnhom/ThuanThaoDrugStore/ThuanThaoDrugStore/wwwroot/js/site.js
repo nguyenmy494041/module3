@@ -1,38 +1,33 @@
-﻿// File javascript để lấy dữ liệu
-
-// Khai báo URL service của bạn ở đây
+﻿
+const idTinhmacdinh = 15;
+const idHuyenmacdinh = 201;
+const idXamacdinh = 2844;
 var baseService = "https://localhost:44347/User";
 var TinhThanhUrl = baseService + "/LayraTinhThanh";
-
 var QuanHuyenUrl = baseService + "/LayraQuanHuyen";
 var PhuongXaUrl = baseService + "/LayraPhuongXa";
-$(document).ready(function () {
-    // load danh sách country
-    LayTinhThanh();
 
+
+$(document).ready(function () {
+    LayTinhThanh();
+    LayQuanHuyen();
+    LayPhuongXa();
     $("#IdTinhThanh").on('change', function () {
         var id = $(this).val();
         if (id != undefined && id != '') {
             LayQuanHuyen(id);
-        }
+        };
     });
 
-   
+
     $("#IdQuanHuyen").on('change', function () {
         var id = $(this).val();
         if (id != undefined && id != '') {
             LayPhuongXa(id);
+
         }
     });
-    //$("#IdPhuongXa").on('change', function () {
-      
-    //    var provinceText = $("#ddlProvince option:selected").text();
-    //    var districtText = $("#ddlDistrict option:selected").text();
-    //    var wardText = $("#ddlWard option:selected").text();
-    //    var html =" Tỉnh thành: " + provinceText + " " + "Quận huyện: " + districtText + " " + "Xã phường: " + wardText;
-    //    html += "</br>Quê bạn thật là đẹp. Chúc mừng bạn!!!";
-    //    $("#divResult").html(html);
-    //});
+
 });
 
 
@@ -42,44 +37,53 @@ $(document).ready(function () {
 
 function LayTinhThanh() {
     $.get(TinhThanhUrl, function (data) {
-        
+
         if (data != null && data != undefined && data.length) {
             var html = '';
-            html += '<option value="">--Chưa được chọn--</option>';
             $.each(data, function (key, item) {
                 console.log(item);
-                html += '<option value=' + item.id_TinhThanh + '>' + item.tenTinhThanh + '</option>';
+                if (item.id_TinhThanh == idTinhmacdinh) {
+                    html += '<option value="' + item.id_TinhThanh + '" selected>' + item.tenTinhThanh + '</option>';
+                }
+                else {
+                    html += '<option value="' + item.id_TinhThanh + '">' + item.tenTinhThanh + '</option>';
+                }
             });
             $("#IdTinhThanh").html(html);
-        }
+                    }
     });
 }
-// truyền id của country vào
 
-// truyền id của province vào
-function LayQuanHuyen(id) {
+function LayQuanHuyen(id = idTinhmacdinh) {
     $.get(QuanHuyenUrl + "/" + id, function (data) {
         if (data != null && data != undefined && data.length) {
             var html = '';
-            html += '<option value="">--Chưa được chọn--</option>';
             $.each(data, function (key, item) {
                 console.log(item);
-                html += '<option value=' + item.id_QuanHuyen + '>' + item.tenQuanHuyen + '</option>';
+                if (item.id_QuanHuyen == idHuyenmacdinh) {
+                    html += '<option value="' + item.id_QuanHuyen + '"selected>' + item.tenQuanHuyen + '</option>';
+                }
+                else {
+                    html += '<option value="' + item.id_QuanHuyen + '">' + item.tenQuanHuyen + '</option>';
+                }
             });
             $("#IdQuanHuyen").html(html);
         }
     });
 }
-// truyền id của district vào
-function LayPhuongXa(id) {
+
+function LayPhuongXa(id = idHuyenmacdinh) {
     console.log(id);
     $.get(PhuongXaUrl + "/" + id, function (data) {
         if (data != null && data != undefined && data.length) {
             var html = '';
-            html += '<option value="">--Chưa được chọn--</option>';
             $.each(data, function (key, item) {
                 console.log(item);
-                html += '<option value=' + item.id_PhuongXa + '>' + item.tenPhuongXa + '</option>';
+                if (item.id_PhuongXa == idXamacdinh) {
+                    html += '<option value="' + item.id_PhuongXa + '"selected>' + item.tenPhuongXa + '</option>';
+                } else {
+                    html += '<option value=' + item.id_PhuongXa + '>' + item.tenPhuongXa + '</option>';
+                }
             });
             $("#IdPhuongXa").html(html);
         }
