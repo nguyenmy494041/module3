@@ -14,7 +14,7 @@ namespace CuaHangQuatNuoc.Models.Products
 
 
         [Display(Name = "Mã sản phẩm"), MaxLength(20)]
-        [ForeignKey("ProductId")]
+        [ForeignKey("Products")]
         public string ProductId { get; set; }
 
         [Display(Name = "Chức năng"), MaxLength(200)]
@@ -33,10 +33,13 @@ namespace CuaHangQuatNuoc.Models.Products
         public string CollingRange { get; set; }
 
         [Display(Name = "Lưu lượng gió")]
-        public int WindFlow { get; set; }
+        public Nullable<int> WindFlow { get; set; }
 
         [Display(Name = "Loại lồng quạt"), MaxLength(100)]
         public string FanCageType { get; set; }
+
+        [Display(Name = "Độ ồn"), MaxLength(100)]
+        public string Noiselevel { get; set; }
 
         [Display(Name = "Mức tiêu thụ nước"), MaxLength(200)]
         public string WaterConsumption { get; set; }
@@ -48,10 +51,10 @@ namespace CuaHangQuatNuoc.Models.Products
         public string FilterTechnology { get; set; }
 
         [Display(Name = "Số lượng lõi lọc")]
-        public int NumberFilterCores { get; set; }
+        public Nullable<int> NumberFilterCores { get; set; }
 
         [Display(Name = "Công suất lọc nước")]
-        public int FilterCapacity { get; set; }
+        public Nullable<int> FilterCapacity { get; set; }
 
         [Display(Name = "Hệ thống bơm"), MaxLength(200)]
         public string Pumping { get; set; }
@@ -66,14 +69,16 @@ namespace CuaHangQuatNuoc.Models.Products
 
 
         [Display(Name = "Áp lực nước")]
-        public float WaterPressure { get; set; }
+        public Nullable<float> WaterPressure { get; set; }
 
         [Display(Name = "Thời gian đun nóng")]
-        public int WarmUpTime { get; set; }
+        public Nullable<int> WarmUpTime { get; set; }
 
         [Display(Name = "Nhiệt độ tối đa")]
-        public int MaxTemperature { get; set; }
-        public Product product { get;set; } 
+        public Nullable<int> MaxTemperature { get; set; }
+
+
+        public virtual Product product { get;set; } 
 
 
 

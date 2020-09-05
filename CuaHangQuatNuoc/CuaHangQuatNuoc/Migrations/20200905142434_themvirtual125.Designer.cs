@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CuaHangQuatNuoc.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200904074449_createtable")]
-    partial class createtable
+    [Migration("20200905142434_themvirtual125")]
+    partial class themvirtual125
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,8 +28,9 @@ namespace CuaHangQuatNuoc.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryName")
-                        .HasColumnType("int")
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
                     b.HasKey("CategoryId");
@@ -109,17 +110,17 @@ namespace CuaHangQuatNuoc.Migrations
 
                     b.Property<string>("Utilities")
                         .IsRequired()
-                        .HasColumnType("nvarchar(300)")
-                        .HasMaxLength(300);
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<int>("Wattage")
                         .HasColumnType("int");
 
-                    b.Property<int>("Weight")
-                        .HasColumnType("int");
+                    b.Property<float>("Weight")
+                        .HasColumnType("real");
 
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("ProductId");
 
@@ -151,7 +152,7 @@ namespace CuaHangQuatNuoc.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<int>("FilterCapacity")
+                    b.Property<int?>("FilterCapacity")
                         .HasColumnType("int");
 
                     b.Property<string>("FilterTechnology")
@@ -162,10 +163,10 @@ namespace CuaHangQuatNuoc.Migrations
                         .HasColumnType("nvarchar(150)")
                         .HasMaxLength(150);
 
-                    b.Property<int>("MaxTemperature")
+                    b.Property<int?>("MaxTemperature")
                         .HasColumnType("int");
 
-                    b.Property<int>("NumberFilterCores")
+                    b.Property<int?>("NumberFilterCores")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductId")
@@ -184,17 +185,17 @@ namespace CuaHangQuatNuoc.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
-                    b.Property<int>("WarmUpTime")
+                    b.Property<int?>("WarmUpTime")
                         .HasColumnType("int");
 
                     b.Property<string>("WaterConsumption")
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
-                    b.Property<float>("WaterPressure")
+                    b.Property<float?>("WaterPressure")
                         .HasColumnType("real");
 
-                    b.Property<int>("WindFlow")
+                    b.Property<int?>("WindFlow")
                         .HasColumnType("int");
 
                     b.Property<string>("WindMode")
@@ -224,7 +225,7 @@ namespace CuaHangQuatNuoc.Migrations
             modelBuilder.Entity("CuaHangQuatNuoc.Models.Products.Product", b =>
                 {
                     b.HasOne("CuaHangQuatNuoc.Models.Products.Category", "category")
-                        .WithMany("Products")
+                        .WithMany("products")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

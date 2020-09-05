@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CuaHangQuatNuoc.Migrations
 {
-    public partial class createtable : Migration
+    public partial class taocacquanhe : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +12,7 @@ namespace CuaHangQuatNuoc.Migrations
                 {
                     CategoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<int>(maxLength: 150, nullable: false)
+                    CategoryName = table.Column<string>(maxLength: 150, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,14 +28,14 @@ namespace CuaHangQuatNuoc.Migrations
                     CategoryId = table.Column<int>(maxLength: 150, nullable: false),
                     Price = table.Column<long>(maxLength: 20, nullable: false),
                     Size = table.Column<string>(maxLength: 150, nullable: false),
-                    Weight = table.Column<int>(nullable: false),
+                    Weight = table.Column<float>(nullable: false),
                     TankCapacity = table.Column<int>(nullable: false),
                     Brand = table.Column<string>(maxLength: 50, nullable: false),
                     Wattage = table.Column<int>(nullable: false),
-                    Utilities = table.Column<string>(maxLength: 300, nullable: false),
+                    Utilities = table.Column<string>(maxLength: 500, nullable: false),
                     Manufactures = table.Column<string>(maxLength: 100, nullable: false),
                     MadeIn = table.Column<string>(maxLength: 50, nullable: false),
-                    Year = table.Column<DateTime>(nullable: false),
+                    Year = table.Column<int>(nullable: false),
                     Description = table.Column<string>(maxLength: 10000000, nullable: false)
                 },
                 constraints: table =>

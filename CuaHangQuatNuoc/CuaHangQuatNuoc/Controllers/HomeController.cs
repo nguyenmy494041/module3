@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CuaHangQuatNuoc.Models;
 using CuaHangQuatNuoc.Models.AppDbContext;
+using CuaHangQuatNuoc.Models.Products;
 
 namespace CuaHangQuatNuoc.Controllers
 {

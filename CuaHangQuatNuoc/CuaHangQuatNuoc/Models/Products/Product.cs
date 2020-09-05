@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +21,7 @@ namespace CuaHangQuatNuoc.Models.Products
 
         [Required(ErrorMessage = "Chưa chọn loại sản phẩm")]
         [Display(Name = "Loai sản phẩm"), MaxLength(150)]
+        [ForeignKey("Categorys")]
         public int CategoryId { get; set; }
 
         public Category category { get; set; }
@@ -34,7 +36,7 @@ namespace CuaHangQuatNuoc.Models.Products
 
         [Display(Name = "Cân nặng")]
         [Required(ErrorMessage = "Chưa điền thông tin cân nặng")]
-        public int Weight { get; set; }
+        public float Weight { get; set; }
 
         [Display(Name = "Dung tích bình chứa")]
         [Required(ErrorMessage = "Chưa điền dung tích bình chứa")]
@@ -48,7 +50,7 @@ namespace CuaHangQuatNuoc.Models.Products
         [Required(ErrorMessage = "Chưa điền công suất")]
         public int Wattage { get; set; }
 
-        [Display(Name = "Tiện ích"), MaxLength(300)]
+        [Display(Name = "Tiện ích"), MaxLength(500)]
         [Required(ErrorMessage = "Chưa điền thông tin tiện ích")]
         public string Utilities { get; set; }
 
@@ -62,17 +64,21 @@ namespace CuaHangQuatNuoc.Models.Products
 
         [Display(Name = "Năm ra mắt")]
         [Required(ErrorMessage = "Chưa điền năm ra mắt")]
-        [DataType(DataType.Date)]
-        public DateTime Year { get; set; }
+        
+        public int Year { get; set; }
 
         [Display(Name = "Mô tả sản phẩm"), MaxLength(10000000)]
         [Required(ErrorMessage = "Chưa mô tả về sản phẩm")]
         public string Description { get; set; }
 
-        public Specification specification { get; set; }
+        public virtual Specification specification { get; set; }
 
-        public List<Image> images { get; set; }
+        public virtual List<Image> images { get; set; }
 
+        public Product()
+        {
+            this.images = new List<Image>();
+        }
 
     }
 }
