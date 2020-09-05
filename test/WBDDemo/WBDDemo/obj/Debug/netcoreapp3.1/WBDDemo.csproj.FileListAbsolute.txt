@@ -433,3 +433,4 @@ C:\DataPersonal\Codegym\module3\test\WBDDemo\WBDDemo\obj\Debug\netcoreapp3.1\Raz
 C:\DataPersonal\Codegym\module3\test\WBDDemo\WBDDemo\obj\Debug\netcoreapp3.1\Razor\Views\Role\Edit.cshtml.g.cs
 C:\DataPersonal\Codegym\module3\test\WBDDemo\WBDDemo\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 C:\DataPersonal\Codegym\module3\test\WBDDemo\WBDDemo\obj\Debug\netcoreapp3.1\Razor\Views\User\Create.cshtml.g.cs
+C:\DataPersonal\Codegym\module3\test\WBDDemo\WBDDemo\obj\Debug\netcoreapp3.1\Razor\Views\User\Edit.cshtml.g.cs

@@ -1,11 +1,12 @@
 ﻿
-@model UserCreateViewModel
+@model UserEditViewModel
 @{
-    ViewBag.Title = "Create User";
+    ViewBag.Title = "Edit User";
     var emps = ViewBag.emps;
 }
 
-<form asp-controller="User" asp-action="Create" method="post" class=" mt-4">
+<form asp-controller="User" asp-action="Edit" method="post" class=" mt-4">
+    <input hidden asp-for="UserId" />
     <div asp-validation-summary="All" class=" text-danger"></div>
     <div class=" row form-group">
         <div class="col-sm-2">
@@ -35,32 +36,13 @@
         </div>
     </div>
 
-    <div class=" row form-group">
-        <div class="col-sm-2">
-            <label asp-for=" Password"></label>
-        </div>
-        <div class=" col-sm-10">
-            <input asp-for=" Password" class=" form-control" />
-            <span asp-validation-for=" Password" class=" text-danger"></span>
-        </div>
-    </div>   
-
-    <div class=" row form-group">
-        <div class="col-sm-2">
-            <label asp-for=" ConfirmPassword"></label>
-        </div>
-        <div class=" col-sm-10">
-            <input asp-for=" ConfirmPassword" class=" form-control" />
-            <span asp-validation-for=" ConfirmPassword" class=" text-danger"></span>
-        </div>
-    </div>
-
+   
     @*hien thi tat ca cac loi*@
     <div asp-validation-summary="None"></div>
     <div class=" row form-group">
 
         <div class=" col-sm-12">
-            <button type="submit" class=" btn btn-primary">Create</button>
+            <button type="submit" class=" btn btn-primary">Update</button>
             <a asp-controller="User" asp-action="Index" class="btn btn-warning">Back</a>
         </div>
     </div>

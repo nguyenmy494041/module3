@@ -22,6 +22,7 @@ namespace WBDDemo.Models
         [Required]
         public Dept? Department { get; set; }
         public string AvatarPath { get; set; }
+      
         
     }
 }

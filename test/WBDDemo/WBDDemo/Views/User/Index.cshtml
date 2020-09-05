@@ -24,39 +24,42 @@
         <tr>
             <td>@item.UserId</td>
             <td>@item.Email</td>
-            <td>@item.City</td>
-            <td>@item.Address</td>
             <td>@item.RolesName</td>
-       
+            <td>@item.Address</td>
+            <td>@item.City</td>
+
+
+
             <td>
                 <a asp-controller="User" asp-action="Edit" asp-route-id="@item.UserId" class="btn btn-outline-primary" style="width:35%">Edit</a>
-                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#@item.UserId">
                     Delete
                 </button>
 
-                <div class="modal" id="myModal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header ">
-                                <h2 class="modal-title" style="margin: auto;color: red">Delete Role</h2>
-                            </div>
-                            <div class="modal-body">
-                                <h6> Are you sure you want to delete Role "@item.Email" ?</h6>
-                            </div>
-                            <div class="modal-footer">
-                                <a asp-controller="User" asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-danger">Yes</a>
-                                <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 @*<a asp-controller="Role" asp-action="Delete" asp-route-id="@item.RoleId" class="btn btn-danger" style="width:35%">Delete</a>*@
             </td>
 
+            <div class="modal" id="@item.UserId">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header ">
+                            <h2 class="modal-title" style="margin: auto;color: red">Delete Role</h2>
+                        </div>
+                        <div class="modal-body">
+                            <h6> Are you sure you want to delete Role "@item.Email" ?</h6>
+                        </div>
+                        <div class="modal-footer">
+                            <a asp-controller="User" asp-action="Delete" asp-route-id="@item.UserId" class="btn btn-danger">Yes</a>
+                            <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </tr>
 
             }
         }
+
     </tbody>
 </table>
 
