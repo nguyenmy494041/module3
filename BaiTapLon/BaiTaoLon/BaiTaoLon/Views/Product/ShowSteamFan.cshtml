@@ -1,0 +1,32 @@
+﻿@model List<BaiTapLon.Models.ProductManagement.Product>
+
+@{ 
+    ViewBag.Title = "Danh sách quạt hơi nước";
+
+}
+
+
+
+
+<div class=" row">
+    @foreach (var steam in Model)
+    {
+        // 1 dong co 4 cot
+        <div class=" col-sm-3">
+
+            <div class=" card my-3 text-center">
+                <div class=" card">
+                    <div class=" card-header">
+                        <h6>@steam.ProductName</h6>
+                    </div>
+                    @steam.Utilities
+                    @*<img src="@Url.Content(employee.AvatarPath)" class="card-img-top" alt="Alternate Text" height="225" asp-append-version="true" />*@
+                    <div class=" card-footer">
+                        <h5> @steam.ProductPrice </h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
