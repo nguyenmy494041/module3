@@ -18,17 +18,11 @@ namespace CuaHangQuatNuoc.Models.Products
         [Required(ErrorMessage = "Chưa điền tên sản phẩm")]
         [Display(Name ="Tên sản phẩm"), MaxLength(150)]
         public string ProductName { get; set; }
-
-        [Required(ErrorMessage = "Chưa chọn loại sản phẩm")]
-        [Display(Name = "Loai sản phẩm"), MaxLength(150)]
-        [ForeignKey("Categorys")]
-        public int CategoryId { get; set; }
-
-        public Category category { get; set; }
+      
 
         [Required(ErrorMessage = "Chưa điền giá sản phẩm")]
         [Display(Name = "Giá sản phẩm"), MaxLength(20)]
-        public long Price { get; set; } 
+        public long ProductPrice { get; set; } 
 
         [Required(ErrorMessage = "Chưa điền thông số kích thước")]
         [Display(Name = "Kích thước"), MaxLength(150)]
@@ -67,18 +61,18 @@ namespace CuaHangQuatNuoc.Models.Products
         
         public int Year { get; set; }
 
-        [Display(Name = "Mô tả sản phẩm"), MaxLength(10000000)]
+        [Display(Name = "Mô tả sản phẩm"), MaxLength(5000)]
         [Required(ErrorMessage = "Chưa mô tả về sản phẩm")]
         public string Description { get; set; }
+        [ForeignKey("Specification")]
+        public int specificationId { get; set; }
+        
+        public virtual Specification Specification { get; set; }
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
-        public virtual Specification specification { get; set; }
-
-        public virtual List<Image> images { get; set; }
-
-        public Product()
-        {
-            this.images = new List<Image>();
-        }
+        public ICollection<Image> Images { get; set; }
 
     }
 }

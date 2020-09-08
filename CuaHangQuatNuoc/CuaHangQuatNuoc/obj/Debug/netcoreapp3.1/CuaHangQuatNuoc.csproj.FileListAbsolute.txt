@@ -422,3 +422,4 @@ C:\DataPersonal\Codegym\module3\CuaHangQuatNuoc\CuaHangQuatNuoc\obj\Debug\netcor
 C:\DataPersonal\Codegym\module3\CuaHangQuatNuoc\CuaHangQuatNuoc\obj\Debug\netcoreapp3.1\CuaHangQuatNuoc.pdb
 C:\DataPersonal\Codegym\module3\CuaHangQuatNuoc\CuaHangQuatNuoc\obj\Debug\netcoreapp3.1\CuaHangQuatNuoc.genruntimeconfig.cache
 C:\DataPersonal\Codegym\module3\CuaHangQuatNuoc\CuaHangQuatNuoc\obj\Debug\netcoreapp3.1\Razor\Views\Product\CreateSteamFan.cshtml.g.cs
+C:\DataPersonal\Codegym\module3\CuaHangQuatNuoc\CuaHangQuatNuoc\obj\Debug\netcoreapp3.1\Razor\Views\Product\ShowAllSteamFan.cshtml.g.cs

@@ -13,14 +13,11 @@ namespace CuaHangQuatNuoc.Models.Products
         [Key]
         public int Id { get; set; }
 
-
-        [Display(Name = "Mã sản phẩm"), MaxLength(20)]
-        [ForeignKey("Products")]
-        public string ProductId { get; set; }
-
         [Required, MaxLength(100)]
         public string ImageProduct { get; set; }
+       
+        public string ProductId { get; set; }
+        public Product Product { get; set; }
 
-        public virtual Product product { get; set; }
     }
 }

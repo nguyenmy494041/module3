@@ -1,5 +1,6 @@
-﻿@inject CuaHangQuatNuoc.Models.AppDbContext.AppDbContext context
-@model CuaHangQuatNuoc.Models.Products.SteamFan
+﻿@model CuaHangQuatNuoc.Models.Products.SteamFan
+
+@inject CuaHangQuatNuoc.Models.AppDbContext.AppDbContext context
 @{
     ViewBag.Title = "Thêm mới sản phẩm";
 }
@@ -9,209 +10,432 @@
 <div class="card bg-light">
     <article class="card-body">
         <h1 class="card-title mt-3 text-center" style="color:red">Thêm mới sản phẩm</h1>
-        <h5 class="text-center">Thêm vào danh sách một một máy quạt hơi nước mới</h5>
+        <h5 class="text-center">Thêm vào danh sách một một máy quạt hơi nước mới</h5><br />
 
 
         <form asp-controller="Product" asp-action="CreateSteamFan" method="post" class=" mt-6" autocomplete="off">
-            <p class="form-group input-group col-sm-10 " style="font-weight:600;font-size:30px">Thông tin cá nhân</p>
             <hr />
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for="ProductId"></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" ProductId" class=" form-control" />
-                    <span asp-validation-for=" ProductId" class=" text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for=" ProductName "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" ProductName" class=" form-control" />
+
+            <div class="row">
+                <div class="input-group mb-4 col-sm-12">
+                    <div class="input-group-prepend" style=" width:20%">
+                        <label class="input-group-text" style=" width:100%" asp-for="ProductName"></label>
+                    </div>
+                    <div style=" width:80%">
+                        <input class="form-control" asp-for="ProductName">
+                    </div>
                     <span asp-validation-for=" ProductName" class=" text-danger"></span>
                 </div>
             </div>
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for=" Brand "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" Brand" class=" form-control" />
-                    <span asp-validation-for=" Brand" class=" text-danger"></span>
-                </div>
-            </div>
 
-
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for=" Dynamic "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" Dynamic" class=" form-control" />
-                    <span asp-validation-for=" Dynamic" class=" text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for="Wattage "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for="Wattage" class=" form-control" placeholder="? W" />
-                    <span asp-validation-for="Wattage" class=" text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for="WindSpeed"></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" WindSpeed" class=" form-control" />
-                    <span asp-validation-for=" WindSpeed" class=" text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for=" WindMode "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" WindMode" class=" form-control" />
-                    <span asp-validation-for=" WindMode" class=" text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for=" Control "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" Control" class=" form-control" />
-                    <span asp-validation-for=" Control" class=" text-danger"></span>
-                </div>
-            </div>
-
-
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for=" CollingRange "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" CollingRange" class=" form-control" />
-                    <span asp-validation-for=" CollingRange" class=" text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for="Noiselevel "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for="Noiselevel" class=" form-control" placeholder="? W" />
-                    <span asp-validation-for="Noiselevel" class=" text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for="FanCageType"></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" FanCageType" class=" form-control" />
-                    <span asp-validation-for=" FanCageType" class=" text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for=" WaterConsumption "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" WaterConsumption" class=" form-control" />
-                    <span asp-validation-for=" WaterConsumption" class=" text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group input-group">
-                <div class="col-sm-2">
-                    <label asp-for=" TankCapacity "></label>
-                </div>
-                <div class=" col-sm-10">
-                    <input asp-for=" TankCapacity" class=" form-control" />
-                    <span asp-validation-for=" TankCapacity" class=" text-danger"></span>
-                </div>
-            </div>
-
-
-            @*<div class="form-group input-group">
-                    <div class="col-sm-2">
-                        <label asp-for=" Dynamic "></label>
-                    </div>
-                    <div class=" col-sm-10">
-                        <input asp-for=" Dynamic" class=" form-control" />
-                        <span asp-validation-for=" Dynamic" class=" text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group input-group">
-                    <div class="col-sm-2">
-                        <label asp-for="Wattage "></label>
-                    </div>
-                    <div class=" col-sm-10">
-                        <input asp-for="Wattage" class=" form-control" placeholder="? W" />
-                        <span asp-validation-for="Wattage" class=" text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group input-group">
-                    <div class="col-sm-2">
-                        <label asp-for="ProductId"></label>
-                    </div>
-                    <div class=" col-sm-10">
-                        <input asp-for=" ProductId" class=" form-control" />
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="ProductId"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="ProductId">
+                        </div>
                         <span asp-validation-for=" ProductId" class=" text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group input-group">
-                    <div class="col-sm-2">
-                        <label asp-for=" ProductName "></label>
-                    </div>
-                    <div class=" col-sm-10">
-                        <input asp-for=" ProductName" class=" form-control" />
-                        <span asp-validation-for=" ProductName" class=" text-danger"></span>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="ProductPrice"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="ProductPrice">
+                        </div>
+                        <span asp-validation-for=" ProductPrice" class=" text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group input-group">
-                    <div class="col-sm-2">
-                        <label asp-for=" Brand "></label>
+            </div>
+
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Utilities"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Utilities">
+                        </div>
+                        <span asp-validation-for=" Utilities" class=" text-danger"></span>
                     </div>
-                    <div class=" col-sm-10">
-                        <input asp-for=" Brand" class=" form-control" />
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Brand"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Brand">
+                        </div>
                         <span asp-validation-for=" Brand" class=" text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group input-group">
-                    <div class="col-sm-2">
-                        <label asp-for=" Dynamic "></label>
-                    </div>
-                    <div class=" col-sm-10">
-                        <input asp-for=" Dynamic" class=" form-control" />
+            </div>
+
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Dynamic"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Dynamic">
+                        </div>
                         <span asp-validation-for=" Dynamic" class=" text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group input-group">
-                    <div class="col-sm-2">
-                        <label asp-for="Wattage "></label>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Wattage "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Wattage">
+                        </div>
+                        <span asp-validation-for=" Wattage " class=" text-danger"></span>
                     </div>
-                    <div class=" col-sm-10">
-                        <input asp-for="Wattage" class=" form-control" placeholder="? W" />
-                        <span asp-validation-for="Wattage" class=" text-danger"></span>
+                </div>
+            </div>
+
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Control"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Control ">
+                        </div>
+                        <span asp-validation-for=" Control " class=" text-danger"></span>
                     </div>
-                </div>*@
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="CollingRange "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="CollingRange">
+                        </div>
+                        <span asp-validation-for=" CollingRange" class=" text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Noiselevel "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Noiselevel ">
+                        </div>
+                        <span asp-validation-for=" Noiselevel " class=" text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="FanCageType  "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="FanCageType  ">
+                        </div>
+                        <span asp-validation-for=" FanCageType  " class=" text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="WaterConsumption"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="WaterConsumption ">
+                        </div>
+                        <span asp-validation-for=" WaterConsumption " class=" text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="TankCapacity "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="TankCapacity ">
+                        </div>
+                        <span asp-validation-for=" TankCapacity " class=" text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="WindMode"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="WindMode  ">
+                        </div>
+                        <span asp-validation-for=" WindMode  " class=" text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="WindSpeed  "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="WindSpeed  ">
+                        </div>
+                        <span asp-validation-for=" WindSpeed  " class=" text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="WindFlow "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="WindFlow   ">
+                        </div>
+                        <span asp-validation-for=" WindFlow   " class=" text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Year"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Year  ">
+                        </div>
+                        <span asp-validation-for=" Year  " class=" text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Size"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Size ">
+                        </div>
+                        <span asp-validation-for=" Size " class=" text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Weight "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input type="number" class="form-control" asp-for="Weight ">
+
+                        </div>
+                        <span asp-validation-for=" Weight " class=" text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="Manufactures"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="Manufactures  ">
+                        </div>
+                        <span asp-validation-for=" Manufactures  " class=" text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="MadeIn  "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="MadeIn  ">
+                        </div>
+                        <span asp-validation-for=" MadeIn  " class=" text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group-prepend" style=" width:19.5%">
+                    <label class="input-group-text" style=" width:100%" asp-for="Description  "></label>
+                </div>
+                <textarea class="form-control" asp-for="Description" rows="6"></textarea>
+                <span asp-validation-for=" Description   " class=" text-danger"></span>
+            </div>
 
 
 
+
+
+            @*<div class=" row">
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4 ">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="CategoryId"></label>
+                        </div>
+                        <div style=" width:60%">
+                            <select asp-for="CategoryId" class="custom-select" onchange="themoi(this.value)">
+                                <option value="" selected>Chọn sản phẩm</option>
+
+                                @foreach (var item in context.Categories)
+                                {
+                                    <option value="@item.CategoryId">@item.CategoryName</option>
+                                }
+
+
+                            </select>
+                        </div>
+                        <span asp-validation-for=" CategoryId  " class=" text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 ">
+                    <div class="input-group mb-4">
+                        <div class="input-group-prepend" style=" width:40%">
+                            <label class="input-group-text" style=" width:100%" asp-for="MadeIn  "></label>
+                        </div>
+                        <div style=" width:60%">
+                            <input class="form-control" asp-for="MadeIn  ">
+                        </div>
+                        <span asp-validation-for=" MadeIn  " class=" text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div id="quathoinuoc">
+                <div class=" row">
+                    <div class="col-sm-6 ">
+                        <div class="input-group mb-4 ">
+                            <div class="input-group-prepend" style=" width:40%">
+                                <label class="input-group-text" style=" width:100%" asp-for="WindFlow "></label>
+                            </div>
+                            <div style=" width:60%">
+                                <input class="form-control" asp-for="WindFlow   ">
+                            </div>
+                            <span asp-validation-for=" WindFlow   " class=" text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <div class="input-group mb-4 ">
+                            <div class="input-group-prepend" style=" width:40%">
+                                <label class="input-group-text" style=" width:100%" asp-for="Year"></label>
+                            </div>
+                            <div style=" width:60%">
+                                <input class="form-control" asp-for="Year  ">
+                            </div>
+                            <span asp-validation-for=" Year  " class=" text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="maylocnuoc">
+                <div class=" row">
+                    <div class="col-sm-6 ">
+                        <div class="input-group mb-4 ">
+                            <div class="input-group-prepend" style=" width:40%">
+                                <label class="input-group-text" style=" width:100%" asp-for="ProductId"></label>
+                            </div>
+                            <div style=" width:60%">
+                                <input class="form-control" asp-for="ProductId">
+                            </div>
+                            <span asp-validation-for=" ProductId" class=" text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 ">
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend" style=" width:40%">
+                                <label class="input-group-text" style=" width:100%" asp-for="ProductPrice"></label>
+                            </div>
+                            <div style=" width:60%">
+                                <input class="form-control" asp-for="ProductPrice">
+                            </div>
+                            <span asp-validation-for=" ProductPrice" class=" text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="binhnonglanh">
+                <div class=" row">
+                    <div class="col-sm-6 ">
+                        <div class="input-group mb-4 ">
+                            <div class="input-group-prepend" style=" width:40%">
+                                <label class="input-group-text" style=" width:100%" asp-for="Noiselevel "></label>
+                            </div>
+                            <div style=" width:60%">
+                                <input class="form-control" asp-for="Noiselevel ">
+                            </div>
+                            <span asp-validation-for=" Noiselevel " class=" text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 ">
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend" style=" width:40%">
+                                <label class="input-group-text" style=" width:100%" asp-for="FanCageType  "></label>
+                            </div>
+                            <div style=" width:60%">
+                                <input class="form-control" asp-for="FanCageType  ">
+                            </div>
+                            <span asp-validation-for=" FanCageType  " class=" text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
 
 
             <div class="form-group">
-                <button type="submit" class="btn btn-primary  float-lg-right"> Account  </button>
+                <button type="submit" class="btn btn-primary  float-lg-right"> Thêm mới</button>
             </div>
-            <p class="text-center">Have an account? <a href="">Log In</a> </p>
+
         </form>
     </article>
 </div>
+
+@section Scripts{
+
+    <script src="~/js/site.js"></script>
+}
+
+

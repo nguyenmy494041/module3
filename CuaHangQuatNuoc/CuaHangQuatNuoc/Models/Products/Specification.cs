@@ -11,11 +11,7 @@ namespace CuaHangQuatNuoc.Models.Products
     {
         [Key]
         public int Id { get; set; }
-
-
-        [Display(Name = "Mã sản phẩm"), MaxLength(20)]
-        [ForeignKey("Products")]
-        public string ProductId { get; set; }
+      
 
         [Display(Name = "Chức năng"), MaxLength(200)]
         public string Dynamic { get; set; }
@@ -77,12 +73,10 @@ namespace CuaHangQuatNuoc.Models.Products
         [Display(Name = "Nhiệt độ tối đa")]
         public Nullable<int> MaxTemperature { get; set; }
 
-
-        public virtual Product product { get;set; } 
-
+     
 
 
-
+        public virtual Product Product { get; set; }
 
     }
 }

@@ -1,0 +1,19 @@
+﻿@model List<CuaHangQuatNuoc.Models.Products.SteamFan>
+
+@{
+    ViewBag.Title = "Danh sách quạt";
+}
+@foreach (var steam in Model)
+{
+    <div>@steam.ProductId  </div>
+    <br />
+    <div>@steam.ProductName</div>
+    <br />
+    <div>@steam.Dynamic</div>
+    <br />
+    <div>@steam.WindMode</div>
+
+    <div></div>
+    <br />
+    <hr />
+}

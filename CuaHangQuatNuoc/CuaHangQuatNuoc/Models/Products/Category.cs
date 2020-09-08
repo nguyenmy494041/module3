@@ -16,12 +16,7 @@ namespace CuaHangQuatNuoc.Models.Products
         [Display(Name = "Tên loại hàng"), MaxLength(150)]
         public string CategoryName { get; set; }
 
-        public virtual List<Product> products { get; set; }
 
-        public Category()
-        {
-            this.products = new List<Product>();
-        }
-
+        public ICollection<Product> Products { get; set; }
     }
 }
