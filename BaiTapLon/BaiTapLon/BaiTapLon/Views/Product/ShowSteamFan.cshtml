@@ -1,0 +1,38 @@
+﻿@model List<BaiTapLon.Models.ProductManagement.Product>
+
+@{
+    ViewBag.Title = "Danh sách quạt hơi nước";
+
+}
+
+
+<h2>Quạt hơi nước</h2>
+
+<div class=" row">
+    @foreach (var steam in Model)
+    {
+        if (steam.CategoryId == 1)
+        {
+           
+                <div class=" col-sm-3">
+
+                    <div class=" card my-3 text-center">
+                        <a asp-controller="Product" asp-action="Detail" asp-route-id="@steam.ProductId">
+                            <div class=" card">
+                                <div class=" card-header">
+                                    <h6>@steam.ProductName</h6>
+                                </div>
+                                <img src="@Url.Content("~/images/"+ steam.Images.First().ImageName)" class="card-img-top" alt="Alternate Text" height="225" asp-append-version="true" />
+                                <div class=" card-footer">
+                                    <h5 style="color: red"> @steam.ProductPrice </h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            
+        }
+
+
+    }
+</div>
