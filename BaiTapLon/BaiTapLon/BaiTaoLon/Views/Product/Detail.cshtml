@@ -1,0 +1,176 @@
+﻿@model BaiTapLon.Models.ProductManagement.Product
+@{
+    ViewBag.Title = $"{@Model.ProductName}";
+    var result = Model.Images.ToList();
+    var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+}
+
+@*@Html.Raw(Model.Description.Replace("\r\n", "<br />"))*@
+
+<h2 class=" mt-4">@Model.ProductName </h2>
+<br />
+<div class=" row">
+
+    <div class=" col-sm-5">
+        <div id="carouselExampleInterval" class="carousel slide my-2 border border-secondary" data-ride="carousel">
+            <div class="carousel-inner">
+
+                @for (int i = 0; i < result.Count; i++)
+                {
+                    @if (i == 0)
+                    {
+                        <div class="carousel-item active my-2 " data-interval="@(10000*(result.Count - i))">
+                            <img src="~/images/@result[i].ImageName" class="d-block w-100" alt="text">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item my-2" data-interval="@(10000*(result.Count - i))">
+                            <img src="~/images/@result[i].ImageName" class="d-block w-100" alt="text">
+                        </div>
+                    }
+
+                }
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true" style="color:black"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="row">
+
+            <p class="btn btn-outline-info" style=" color: Highlight; margin:auto" data-toggle="modal" data-target="#exampleModal">
+                Xem thông <br />số kỹ thuật
+            </p>
+        </div>
+
+
+    </div>
+
+    @*<div class=" col-sm-1"></div>*@
+<div class=" col-sm-4" style="line-height: 12px">
+    <p>
+        Giá sản phẩm: <b style=" color:red; font-size: 25px;">@String.Format(info, "{0:#,##0 đ}", Model.ProductPrice)</b>&nbsp;&nbsp;
+        <sup class=" btn btn-sm btn-warning" style="font-size:10px; height:22px;">Trả góp 0%</sup>
+    </p>
+    <p>Trạng thái: <b style=" color:green">CÒN HÀNG</b></p>
+
+    @if (DateTime.Now.Hour <= 12)
+    {
+        <p style=" color:green">Giao hàng <b> &nbsp;Từ 16h - 18h hôm nay (@DateTime.Now.ToString("dd-MM"))</b></p>
+    }
+    else
+    {
+        <p style=" color:green">Giao hàng <b> &nbsp;Từ 10h - 12h ngày mai (@DateTime.Now.ToString("dd-MM"))</b></p>
+    }
+
+
+
+    <p style=" color:green">Miễn phí giao hàng</p><br />
+    <a style="line-height: 10px" class="btn btn-success btn-lg btn-block"><p><b>MUA NGAY</b><div style=" font-size:15px">Hàng chính hãng 100%</div></p></a>
+    <a style="line-height: 10px" class="btn btn-info btn-lg btn-block"><p><b>MUA TRẢ GÓP 0%</b><div style=" font-size:15px">Thủ tục đơn giản</div></p></a>
+    <br /><b>Gói trả góp 0% phổ biến nhất</b>
+
+    <ul style="line-height: 25px">
+        <li>Góp <b>@String.Format(info, "{0:#,##0 đ}", Math.Round((Model.ProductPrice * 0.7 * 1.01 / 6) / 1000, 0) * 1000)</b>/tháng trong <b>6</b> tháng </li>
+        <li>Trả trước <b>@String.Format(info, "{0:#,##0 đ}", Math.Round((Model.ProductPrice * 0.3) / 1000, 0) * 1000)</b>(30%) </li>
+    </ul>
+</div>
+
+    <div class="col-sm-3">
+        <div class="border border-dark container rounded">
+            <div style="text-align:center"><b>MUA NHƯ VUA - CHĂM SÓC NHƯ VIP</b></div>
+            <hr />
+            <div><b>100% hàng chính hãng</b></div>
+            <hr />
+            <div>Lỗi là đổi mới trong <b>1 tháng</b> tận nhà.</div><hr />
+            <div>Bảo hành cực dễ chỉ cần <b>số điện thoại</b></div><hr />
+            <div>Bảo hành <b>chính hãng thân máy 2 năm</b></div><hr />
+            <div>Giao hàng miện phí và nhanh chóng</div><hr />
+            <div>Bảo hành Động cơ: 2 năm chính hãng</div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết @Model.ProductName</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <table class="table table-striped">
+
+                    <tbody>
+                        <tr>
+                            <td><i>Đặc tính sản phẩm</i></td>
+                        </tr>
+                        <tr>
+                            <td><b>Công suất</b>: @Model.Wattage W</td>
+                        </tr>
+                        <tr>
+                            <td><b>Chức năng</b>: @Model.Specification.Dynamic</td>
+                        </tr>
+                        <tr>
+                            <td><b>Tốc độ gió</b>: @Model.Specification.WindSpeed</td>
+                        </tr>
+                        <tr>
+                            <td><b>Chế độ gió</b>: @Model.Specification.WindMode</td>
+                        </tr>
+                        <tr>
+                            <td><b>điều khiển</b>: @Model.Specification.Control</td>
+                        </tr>
+                        <tr>
+                            <td><b>Phạm vi làm mát</b>: @Model.Specification.CollingRange</td>
+                        </tr>
+                        <tr>
+                            <td><b>Độ ồn</b>: @Model.Specification.Noiselevel</td>
+                        </tr>
+                        <tr>
+                            <td><b>Lưu lượng gió</b>: @Model.Specification.WindFlow m<sup>3</sup>/h</td>
+                        </tr>
+                        <tr>
+                            <td><b>Loại lồng quạt</b>: @Model.Specification.FanCageType</td>
+                        </tr>
+                        <tr>
+                            <td><b>Tiện ích</b>: @Model.Utilities</td>
+                        </tr>
+                        <tr>
+                            <td><b>Dung tích bình chứa</b>: @Model.TankCapacity lít</td>
+                        </tr>
+                        <tr>
+                            <td><b>Kích thước</b>: @Model.Size</td>
+                        </tr>
+                        <tr>
+                            <td><b>Trọng lượng</b>: @Model.Weight kg</td>
+                        </tr>
+                        <tr>
+                            <td><b>Thương hiệu của</b>: @Model.Manufactures</td>
+                        </tr>
+                        <tr>
+                            <td><b>Sản xuất tại</b>: @Model.MadeIn</td>
+                        </tr>
+                        <tr>
+                            <td><b>Năm ra mắt</b>: @Model.Year</td>
+                        </tr>
+                        <tr>
+                            <td><b>Hãng</b>: @Model.Brand.BrandName</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

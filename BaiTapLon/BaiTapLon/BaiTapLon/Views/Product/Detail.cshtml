@@ -1,8 +1,0 @@
-﻿@model BaiTapLon.Models.ProductManagement.Product
-@{
-    ViewBag.Title = $"{@Model.ProductName}";
-}
-
-@Html.Raw(Model.Description.Replace("\r\n", "<br />"))
-
-
