@@ -1,0 +1,15 @@
+﻿.nghieng-do{
+    color: red;
+}
+#namgioiquoc #namsinh {
+    width: 40%;
+    float: left;
+}
+#namgioiquoc #gioitinh {
+    width: 30%;
+    float: left;
+}
+#namgioiquoc #quoctich {
+    width: 30%;
+    float: left;
+}
