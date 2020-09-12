@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ToKhaiYte.Models;
+using ToKhaiYte.Services;
 
 namespace ToKhaiYte
 {
@@ -26,6 +27,7 @@ namespace ToKhaiYte
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<IToKhaiServices, ToKhaiServices>();
             services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("BaitapLonDbConnection")));
         }

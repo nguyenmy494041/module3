@@ -15,6 +15,7 @@ namespace ToKhaiYte.Models.Entities
         public string TenQuanHuyen { get; set; }
         [Required, MaxLength(100)]
         public string QuanHayHuyen { get; set; }
+        public string TenDayDu => $"{QuanHayHuyen} {TenQuanHuyen}";
 
         [Required]
         [ForeignKey("TinhThanh")]

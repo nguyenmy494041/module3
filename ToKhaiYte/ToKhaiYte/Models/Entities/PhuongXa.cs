@@ -14,7 +14,7 @@ namespace ToKhaiYte.Models.Entities
         public string TenPhuongXa { get; set; }
         [Required, MaxLength(30)]
         public string PhuongHayXa { get; set; }
-
+        public string TenDayDu => $"{PhuongHayXa} {TenPhuongXa}";
         //[Required]
         //[ForeignKey("QuocGia")]
         //public int QuocGiaId { get; set; }

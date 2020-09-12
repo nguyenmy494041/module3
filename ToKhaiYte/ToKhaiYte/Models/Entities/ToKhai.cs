@@ -23,7 +23,7 @@ namespace ToKhaiYte.Models.Entities
         [Display(Name = "Giới tính"), MaxLength(50)]
         public string Gioitinh { get; set; }
         [Required(ErrorMessage = "Chưa chọn quốc tịch")]
-        [Display(Name = "Quốc tịch"), MaxLength(150)]
+        [Display(Name = "Quốc tịch")]
         public int Quoctich { get; set; }
         [Required(ErrorMessage = "Chưa điền thông tin")]
         [Display(Name = "Số CMND"),MaxLength(200)]

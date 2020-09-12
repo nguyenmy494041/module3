@@ -1,15 +1,6 @@
-﻿.nghieng-do{
-    color: red;
+﻿@media screen and (max-width: 767px) {
+    .tableChoiceData {
+        display: block;
+    }
 }
-#namgioiquoc #namsinh {
-    width: 40%;
-    float: left;
-}
-#namgioiquoc #gioitinh {
-    width: 30%;
-    float: left;
-}
-#namgioiquoc #quoctich {
-    width: 30%;
-    float: left;
-}
+

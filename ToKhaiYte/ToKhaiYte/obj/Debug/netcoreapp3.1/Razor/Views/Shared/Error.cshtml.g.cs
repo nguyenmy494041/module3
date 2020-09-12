@@ -26,8 +26,15 @@ using ToKhaiYte.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\DataPersonal\Codegym\module3\ToKhaiYte\ToKhaiYte\Views\_ViewImports.cshtml"
+using ToKhaiYte.Models.ViewModel;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6a5625cc8fb4476f348b0fe9041c550465d8bf9", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"08ecfd700c6593221b2e33bcc9c365673647af86", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7ea6dc11a070355cd7e134c81175cded1b0c7a65", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     {
         #pragma warning disable 1998

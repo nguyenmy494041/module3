@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using ToKhaiYte.Models.Entities;
 
 namespace ToKhaiYte.Models.ViewModel
 {
@@ -11,7 +12,7 @@ namespace ToKhaiYte.Models.ViewModel
         [Required]
         public int CuaKhauId { get; set; }
         [Required]
-        [Display(Name = "Năm sinh")]
+        [Display(Name = "Họ tên"),MaxLength(100)]
         public string Hoten { get; set; }
 
         [Required]
@@ -21,7 +22,7 @@ namespace ToKhaiYte.Models.ViewModel
         [Display(Name = "Giới tính"), MaxLength(50)]
         public string Gioitinh { get; set; }
         [Required]
-        [Display(Name = "Quốc tịch"), MaxLength(150)]
+        [Display(Name = "Quốc tịch")]
         public int Quoctich { get; set; }
         [Required(ErrorMessage = "Chưa điền thông tin")]
         [Display(Name = "Số CMND"), MaxLength(200)]
@@ -29,9 +30,9 @@ namespace ToKhaiYte.Models.ViewModel
 
         [Required, MaxLength(300)]
         public string PhuongTienDiLai { get; set; }
-        [Required, MaxLength(300)]
+        [Required, MaxLength(100)]
         public string SoHieuPhuongTien { get; set; }
-        [Required, MaxLength(300)]
+        [Required, MaxLength(50)]
         public string SoGhe { get; set; }
         [Required]
         public int NgayDi { get; set; }
@@ -51,7 +52,7 @@ namespace ToKhaiYte.Models.ViewModel
         //public DateTime NgayNhapCanh { get; set; }
         [Required]
         public int QuocGiaKhoiHanh { get; set; }
-        [Required, MaxLength(300)]
+        [Required, MaxLength(100)]
         public string TinhKhoiHanh { get; set; }
         [Required]
         public int QuocGiaDen { get; set; }
@@ -61,13 +62,13 @@ namespace ToKhaiYte.Models.ViewModel
         public string NoiTungDen { get; set; }
 
         [Required]        
-        public int TinhThanh { get; set; }
+        public int TinhThanhId { get; set; }
     
         [Required]
-        public int QuanHuyen { get; set; }
+        public int QuanHuyenId { get; set; }
 
         [Required]
-        public int PhuongXa { get; set; }
+        public int PhuongXaId { get; set; }
 
         [Required, MaxLength(150)]
         public string SoNha { get; set; }
@@ -94,14 +95,25 @@ namespace ToKhaiYte.Models.ViewModel
         public bool XuatHuyetNgoaiDa { get; set; }
         [Required]
         public bool NoiBanNgoaiDa { get; set; }
-        [Required]
+        [Required, MaxLength(200)]
         public string DanhSachVacxin { get; set; }
         [Required]
         public bool TiepXucDongVat { get; set; }
         [Required]
         public bool TiepXucNguoiBenh { get; set; }
 
-
-
+        public List<CuaKhau> cuakhaus { get; set; }
+        public List<QuocGia> quocgias { get; set; }
+        public List<TinhThanh> tinhthanhs { get; set; }
+        public List<QuanHuyen> quanhuyens { get; set; }
+        public List<PhuongXa> phuongxas { get; set; }
+        public DangKyToKhai()
+        {
+            cuakhaus = new List<CuaKhau>();
+            quocgias = new List<QuocGia>();
+            tinhthanhs = new List<TinhThanh>();
+            quanhuyens = new List<QuanHuyen>();
+            phuongxas = new List<PhuongXa>();
+        }
     }
 }

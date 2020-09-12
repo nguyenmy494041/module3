@@ -1,9 +1,8 @@
-﻿@model ToKhaiYte.Models.ViewModel.DangKyToKhai
+﻿@model DangKyToKhai
 @inject AppDbContext context
 @{
     ViewBag.Title = "Đăng ký tờ khai y tế";
-    var tinh = context.TinhThanh.ToList();
-
+   
 }
 
 <form asp-controller="Home" asp-action="Dangky" method="post" class=" bg-light rounded container">
@@ -19,9 +18,8 @@
             <label asp-for=" CuaKhauId">Cửa khẩu <i style="color:red">(*)</i></label>
         </div>
         <div class=" col-3">
-            <select asp-for=" CuaKhauId" class=" custom-select">
-                <option value="value">text</option>
-                <option value="value">ronaldo</option>
+            <select asp-for=" CuaKhauId" asp-items="@(new SelectList(Model.cuakhaus, "CuaKhauId", "TenCuaKhau"))" class=" custom-select">
+                <option>-Chọn-</option>
             </select>
             <span asp-validation-for=" CuaKhauId" class=" text-danger"></span>
         </div>
@@ -44,7 +42,7 @@
                     <label asp-for=" Namsinh">Năm sinh<i style="color:red">(*)</i></label>
                 </div>
                 <div class=" col-auto">
-                    <select asp-for=" CuaKhauId" class=" custom-select">
+                    <select asp-for=" Namsinh" class=" custom-select">
                         @for (int i = 2020; i > 1900; i--)
                         {
                             if (i == 1990)
@@ -81,11 +79,8 @@
                 <label asp-for=" Quoctich">Quốc tịch<i style="color:red">(*)</i></label>
             </div>
             <div style=" width :64.2%">
-                <select asp-for=" Quoctich" class=" custom-select">
-                    <option value="">---Chọn---</option>
-                    <option value="Nam">Nam</option>
-                    <option value="Nữ">Nữ</option>
-                    <option value="Khác">Khác</option>
+                <select asp-for=" Quoctich" asp-items="@(new SelectList(Model.quocgias, "QuocGiaId", "TenQuocGia"))" class=" custom-select">
+                    <option>-Chọn-</option>
                 </select>
                 <span asp-validation-for=" Quoctich" class=" text-danger"></span>
             </div>
@@ -107,27 +102,32 @@
             <label asp-for=" PhuongTienDiLai">Thông tin đi lại<i style="color:red">(*)</i></label>
         </div>
         @*chỗ dễ sai nhất*@
-        <div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label" for="inlineCheckbox1">Tàu bay &nbsp;</label>
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Tàu bay">
-            </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label" for="inlineCheckbox2">Tàu thuyền &nbsp;</label>
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Tàu thuyền">
-            </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label" for="inlineCheckbox3">Ô tô &nbsp;</label>
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Ô tô">
-            </div>
-            <div class="form-check form-check-inline">
-                <label class="form-check-label" for="inlineCheckbox4">Khác (ghi rõ) &nbsp;</label>
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="koro">
-            </div>
+    <div >
+        <input type="checkbox" asp-for="PhuongTienDiLai" value="Tàu bay">Bóng đá
+        <input type="checkbox" asp-for="PhuongTienDiLai" value="Tàu thuyền">Bơi lội
+        <input type="checkbox" asp-for="PhuongTienDiLai" value="Ô tô">Điền kinh
+       
+
+        @*<div class="form-check form-check-inline">
+            <label class="form-check-label" for="inlineCheckbox1">Tàu bay &nbsp;</label>
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Tàu bay">
         </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="inlineCheckbox2">Tàu thuyền &nbsp;</label>
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Tàu thuyền">
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="inlineCheckbox3">Ô tô &nbsp;</label>
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Ô tô">
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="inlineCheckbox4">Khác (ghi rõ) &nbsp;</label>
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="koro">
+        </div>*@
+    </div>
     </div>
     <div class="col row">
-        <textarea class="form-group inline-block form-inline input-group rounded" id="ketquakhac" rows="2"></textarea>
+        <textarea class="form-control" id="ketquakhac" rows="2"></textarea>
     </div>
 
     <div class=" row form-group">
@@ -159,7 +159,7 @@
             </div>
             <div class=" col">
 
-                <select asp-for=" NgayDen" class=" custom-select">
+                <select asp-for=" NgayDi" class=" custom-select">
                     <option value="">Ngày</option>
                     @for (int i = 1; i < 32; i++)
                     {
@@ -177,7 +177,7 @@
             </div>
             <div>
 
-                <select asp-for="ThangDen" class=" custom-select">
+                <select asp-for="ThangDi" class=" custom-select">
                     <option value="">Tháng</option>
                     @for (int i = 1; i < 13; i++)
                     {
@@ -194,7 +194,7 @@
                 </select>
             </div>
             <div class=" col">
-                <select asp-for="NamDen" class="custom-select">
+                <select asp-for="NamDi" class="custom-select">
                     <option value="">Năm</option>
                     <option value="2019">2019</option>
                     <option value="2020">2020</option>
@@ -260,9 +260,10 @@
                 <label asp-for=" QuocGiaKhoiHanh">Quốc gia/Vùng lãnh thổ<i style="color:red">(*)</i></label>
             </div>
             <div class=" col-7">
-                <select asp-for=" QuocGiaKhoiHanh" class="custom-select">
-                    <option value="value">Việt Nam</option>
-                    <option value="value">text</option>
+                <select asp-for=" QuocGiaKhoiHanh" asp-items="@(new SelectList(Model.quocgias, "QuocGiaId", "TenQuocGia"))"
+                        class="custom-select" onchange="dangky.chonvietnam()">
+                    <option>-Chọn-</option>
+
                 </select>
                 <span asp-validation-for=" QuocGiaKhoiHanh" class=" text-danger"></span>
             </div>
@@ -273,7 +274,15 @@
                 <label asp-for=" TinhKhoiHanh">Tỉnh<i style="color:red">(*)</i></label>
             </div>
             <div class=" col-7">
-                <input asp-for=" TinhKhoiHanh" class=" form-control" />
+                <div id="khongphaivietnam"> <input asp-for=" TinhKhoiHanh" class=" form-control" /></div>
+
+                <div id="lavietnam">
+                    <select asp-for=" TinhKhoiHanh" asp-items="@(new SelectList(Model.tinhthanhs, "TenDayDu", "TenDayDu"))"
+                            class="custom-select">
+                        <option value="">-Chọn-</option>
+
+                    </select>
+                </div>
                 <span asp-validation-for=" TinhKhoiHanh" class=" text-danger"></span>
             </div>
         </div>
@@ -287,7 +296,7 @@
             </div>
             <div class=" col-7">
                 <select asp-for=" QuocGiaDen" class="custom-select">
-                    <option value="1">Việt Nam</option>
+                    <option value="433">Việt Nam</option>
                 </select>
                 <span asp-validation-for=" QuocGiaDen" class=" text-danger"></span>
             </div>
@@ -298,9 +307,8 @@
                 <label asp-for=" TinhDen">Tỉnh<i style="color:red">(*)</i></label>
             </div>
             <div class=" col-7">
-                <select asp-for="TinhDen" class=" custom-select">
-                    @*tỉnh việt nam*@
-                    <option value="value">text</option>
+                <select asp-for="TinhDen" asp-items="@(new SelectList(Model.tinhthanhs, "TinhThanhId", "TenDayDu"))" class=" custom-select">
+                    <option value="">-Chọn-</option>
                 </select>
                 <span asp-validation-for=" TinhDen" class=" text-danger"></span>
             </div>
@@ -310,7 +318,7 @@
     <p>Trong vòng 21 ngày qua, Anh/Chị có đến quốc gia/vùng lãnh thổ nào?<i style="color:red">(*)</i></p>
 
     <div class="col row">
-        <textarea asp-for="NoiTungDen" class="form-group inline-block form-inline input-group rounded" id="ketquakhac" rows="2"></textarea>
+        <textarea asp-for="NoiTungDen" class=" form-control" id="ketquakhac" rows="2"></textarea>
         <span asp-validation-for=" NoiTungDen" class=" text-danger"></span>
     </div>
     <br />
@@ -319,38 +327,36 @@
     <div class=" row form-group">
         <div class="col-4">
             <div>
-                <label asp-for=" TinhThanh">Tỉnh thành<i style="color:red">(*)</i></label>
+                <label asp-for=" TinhThanhId">Tỉnh thành<i style="color:red">(*)</i></label>
             </div>
             <div class=" col-">
-                <select asp-for=" TinhThanh" class="custom-select">
-                    <option value="value">Việt Nam</option>
-                    <option value="value">text</option>
+                <select asp-for=" TinhThanhId" asp-items="@(new SelectList(Model.tinhthanhs, "TinhThanhId", "TenDayDu"))"
+                        class="custom-select" onchange="dangky.thaydoitinhthanh(this.value)">
+                    <option value="">-Chọn-</option>
+
                 </select>
-                <span asp-validation-for=" TinhThanh" class=" text-danger"></span>
+                <span asp-validation-for=" TinhThanhId" class=" text-danger"></span>
             </div>
         </div>
         <div class="col-4">
             <div>
-                <label asp-for=" QuanHuyen">Quận/Huyện<i style="color:red">(*)</i></label>
+                <label asp-for=" QuanHuyenId">Quận/Huyện<i style="color:red">(*)</i></label>
             </div>
             <div class=" col-">
-                <select asp-for=" QuanHuyen" class="custom-select">
-                    <option value="value">Việt Nam</option>
-                    <option value="value">text</option>
+                <select asp-for=" QuanHuyenId" class="custom-select" onchange="dangky.thaydoiquanhuyen(this.value)">
+                    <option>-Chọn-</option>
                 </select>
-                <span asp-validation-for=" QuanHuyen" class=" text-danger"></span>
+                <span asp-validation-for=" QuanHuyenId" class=" text-danger"></span>
             </div>
         </div>
         <div class="col-4">
             <div>
-                <label asp-for=" PhuongXa">Phường/Xã<i style="color:red">(*)</i></label>
+                <label asp-for=" PhuongXaId">Phường/Xã<i style="color:red">(*)</i></label>
             </div>
             <div class=" col-">
-                <select asp-for=" PhuongXa" class="custom-select">
-                    <option value="value">Việt Nam</option>
-                    <option value="value">text</option>
+                <select asp-for=" PhuongXaId" class="custom-select">
                 </select>
-                <span asp-validation-for=" PhuongXa" class=" text-danger"></span>
+                <span asp-validation-for=" PhuongXaId" class=" text-danger"></span>
             </div>
         </div>
     </div>
@@ -387,70 +393,119 @@
         </b><i style="color:red">(*)</i>
     </p>
 
-    <div style="width:50%; float:left; flex:1">
-        <table class=" table table-bordered" width="50%">
-            <tr>
-                <th width="70%">Triệu chứng</th>
-                <th width="15%">Có </th>
-                <th width="15%">Không</th>
-            </tr>
-            <tr>
-                <td>Sốt<i style="color:red">(*)</i></td>
-                <td>Có </td>
-                <td>Không</td>
-            </tr>
-            <tr>
-                <td>Sốt<i style="color:red">(*)</i></td>
-                <td>Có </td>
-                <td>Không</td>
-            </tr>
-            <tr>
-                <td>Sốt<i style="color:red">(*)</i></td>
-                <td>Có </td>
-                <td>Không</td>
-            </tr>
-        </table>
+    <div class="tableChoiceData" style=" display:flex">
+        <div style=" flex:1">
+            <table class=" table table-bordered">
+                <tr>
+                    <th width="70%">Triệu chứng</th>
+                    <th style="text-align:center" width="15%">Có </th>
+                    <th style="text-align:center" width="15%">Không</th>
+                </tr>
+                <tr>
+                    <td class="form-check">Sốt<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"> <input type="radio" asp-for="Sot" value="@true" /> </td>
+                    <td style="text-align:center"> <input type="radio" asp-for="Sot" value="@false" /></td>
+                </tr>
+                <tr>
+                    <td>Ho<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="Ho" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="Ho" value="@false" /></td>
+                </tr>
+                <tr>
+                    <td>Khó thở<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="KhoTho" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="KhoTho" value="@false" /></td>
+                </tr>
+                <tr>
+                    <td>Đau họng<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="DauHong" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="DauHong" value="@false" /></td>
+                </tr>
+            </table>
 
+        </div>
+
+        <div style=" flex:1">
+            <table class=" table table-bordered " width="50%">
+                <tr>
+                    <th width="70%">Triệu chứng</th>
+                    <th style="text-align:center" width="15%">Có </th>
+                    <th style="text-align:center" width="15%">Không</th>
+                </tr>
+                <tr>
+                    <td>Nôn/buồn nôn<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="BuonNon" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="BuonNon" value="@false" /></td>
+                </tr>
+                <tr>
+                    <td>Tiêu chảy<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="TieuChay" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="TieuChay" value="@false" /></td>
+                </tr>
+                <tr>
+                    <td>Xuất huyết ngoài da<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="XuatHuyetNgoaiDa" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="XuatHuyetNgoaiDa" value="@false" /></td>
+                </tr>
+                <tr>
+                    <td>Nổi ban ngoài da<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="NoiBanNgoaiDa" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="NoiBanNgoaiDa" value="@false" /></td>
+                </tr>
+            </table>
+        </div>
     </div>
-
-    <div style="width:50%; float:left; flex:1">
-        <table class=" table table-bordered " width="50%">
-            <tr>
-                <th width="70%">Triệu chứng</th>
-                <th width="15%">Có </th>
-                <th width="15%">Không</th>
-            </tr>
-            <tr>
-                <td>Sốt<i style="color:red">(*)</i></td>
-                <td>Có </td>
-                <td>Không</td>
-            </tr>
-            <tr>
-                <td>Sốt<i style="color:red">(*)</i></td>
-                <td>Có </td>
-                <td>Không</td>
-            </tr>
-            <tr>
-                <td>Sốt<i style="color:red">(*)</i></td>
-                <td>Có </td>
-                <td>Không</td>
-            </tr>
-        </table>
-
+    <br />
+    <div>
+        <label>Danh sách vắc-xin hoặc sinh phẩm được sử dụng</label>
+        <textarea asp-for="DanhSachVacxin" rows="2" class=" form-control"></textarea>
+        <span asp-validation-for=" DanhSachVacxin" class=" text-danger"></span>
     </div>
-    <p>jhbcjzhbcj</p>
+    <br />
+    <div>
+        <strong>Lịch sử phơi nhiễm: Trong vòng 21 ngày qua, Anh/Chị có<i style="color:red">(*)</i></strong>
+        <div>
+            <table class=" table table-bordered">
+                <tr>
+                    <th width="85%"></th>
+                    <th style="text-align:center" width="7%">Có</th>
+                    <th style="text-align:center" width="8%">Không</th>
+                </tr>
+                <tr>
+                    <td>Đến trang trại chăn nuôi / chợ buôn bán động vật sống / cơ sở giết mổ động vật / tiếp xúc động vật<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="TiepXucDongVat" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="TiepXucDongVat" value="@false" /></td>
+                </tr>
+                <tr>
+                    <td>Tiếp xúc gần (&lt;2m) với người mắc bệnh viêm đường hô hấp do nCoV<i style="color:red">(*)</i></td>
+                    <td style="text-align:center"><input type="radio" asp-for="TiepXucNguoiBenh" value="@true" /> </td>
+                    <td style="text-align:center"><input type="radio" asp-for="TiepXucNguoiBenh" value="@false" /></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br />
+    <label>Mã bảo mật<i style="color:red">(*)</i></label>
+
+    <br /><br /><br />
+    <label style=" color:red">
+        Dữ liệu bạn cung cấp hoàn toàn bảo mật và chỉ phục vụ cho việc phòng chống dịch, thuộc quản lý
+        của Ban chỉ đạo quốc gia về Phòng chống dịch Covid-19. Khi bạn nhấn nút "Gửi" là bạn đã hiểu và đồng ý.
+    </label>
+    <br /><br />
+    <div class="d-flex justify-content-center"><button class="btn btn-info " type="submit">GỬI TỜ KHAI</button></div>
 
 </form>
+<br />
+<footer>
+    <div class="d-flex flex-row-reverse bg-primary">
+        <p class="text-right text-white">Phần dành cho cán bộ quản lý</p>
+    </div>
+    <div class="d-flex flex-row-reverse bg-primary">
+        @Html.ActionLink("Login", "Login", "Account", null, new { @class = " text-white " })
+    </div>
+</footer>
 
-@*<div class=" row form-group">
-        <div class="col-sm-2">
-            <label asp-for=" Fullname"></label>
-        </div>
-        <div class=" col-sm-10">
-            <input asp-for=" Fullname" class=" form-control" />
-            <span asp-validation-for=" Fullname" class=" text-danger"></span>
-        </div>
-    </div>*@
 
 @section Scripts{
 
