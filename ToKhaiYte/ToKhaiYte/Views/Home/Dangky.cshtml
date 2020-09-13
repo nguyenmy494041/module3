@@ -4,9 +4,9 @@
     ViewBag.Title = "Đăng ký tờ khai y tế";
    
 }
-
+<br />
 <form asp-controller="Home" asp-action="Dangky" method="post" class=" bg-light rounded container">
-
+    <br /><br />
     <div style=" text-align: center">
         <h6>TỜ KHAI Y TẾ ĐỐI VỚI NGƯỜI NHẬP CẢNH</h6>
         <p>ĐÂY LÀ TÀI LIỆU QUAN TRỌNG, THÔNG TIN CỦA ANH/CHỊ SẼ GIÚP CƠ QUAN Y TẾ LIÊN LẠC KHI CẦN THIẾT ĐỂ PHÒNG CHỐNG DỊCH BỆNH TRUYỀN NHIỄM</p>
@@ -98,38 +98,22 @@
     </div>
 
     <div class=" row form-group">
-        <div class=" col-auto">
-            <label asp-for=" PhuongTienDiLai">Thông tin đi lại<i style="color:red">(*)</i></label>
+        <div class=" col-2">
+            <label >Thông tin đi lại<i style="color:red">(*)</i></label>
         </div>
         @*chỗ dễ sai nhất*@
-    <div >
-        <input type="checkbox" asp-for="PhuongTienDiLai" value="Tàu bay">Bóng đá
-        <input type="checkbox" asp-for="PhuongTienDiLai" value="Tàu thuyền">Bơi lội
-        <input type="checkbox" asp-for="PhuongTienDiLai" value="Ô tô">Điền kinh
+    <div class="col-10 form-inline" >
+        <div class=" col-sm-2"><input class="form-check-input " type="checkbox" asp-for="taubay" value="Tàu bay">Tàu bay</div>
+        <div class=" col-sm-2"> <input class="form-check-input " type="checkbox" asp-for="tauthuyen" value="Tàu thuyền">Tàu thuyền</div>
+        <div class=" col-sm-2"><input class="form-check-input " type="checkbox" asp-for="oto" value="Ô tô">Ô tô</div>
+        <div class=" col-sm-2"><input class="form-check-input " type="checkbox" asp-for="khac" value="true">Khác(ghi rõ)</div>
        
-
-        @*<div class="form-check form-check-inline">
-            <label class="form-check-label" for="inlineCheckbox1">Tàu bay &nbsp;</label>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Tàu bay">
-        </div>
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="inlineCheckbox2">Tàu thuyền &nbsp;</label>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Tàu thuyền">
-        </div>
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="inlineCheckbox3">Ô tô &nbsp;</label>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Ô tô">
-        </div>
-        <div class="form-check form-check-inline">
-            <label class="form-check-label" for="inlineCheckbox4">Khác (ghi rõ) &nbsp;</label>
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="koro">
-        </div>*@
     </div>
     </div>
     <div class="col row">
-        <textarea class="form-control" id="ketquakhac" rows="2"></textarea>
+        <textarea class="form-control" asp-for="phuongtienkhac" rows="2"></textarea>
     </div>
-
+    <br />
     <div class=" row form-group">
         <div class="row col-6">
             <div class="col-5">

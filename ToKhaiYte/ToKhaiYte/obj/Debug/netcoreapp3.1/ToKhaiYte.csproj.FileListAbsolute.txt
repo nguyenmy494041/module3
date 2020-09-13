@@ -379,3 +379,6 @@ C:\DataPersonal\Codegym\module3\ToKhaiYte\ToKhaiYte\obj\Debug\netcoreapp3.1\ToKh
 C:\DataPersonal\Codegym\module3\ToKhaiYte\ToKhaiYte\obj\Debug\netcoreapp3.1\ToKhaiYte.pdb
 C:\DataPersonal\Codegym\module3\ToKhaiYte\ToKhaiYte\obj\Debug\netcoreapp3.1\ToKhaiYte.genruntimeconfig.cache
 C:\DataPersonal\Codegym\module3\ToKhaiYte\ToKhaiYte\obj\Debug\netcoreapp3.1\Razor\Views\Home\Dangky.cshtml.g.cs
+C:\DataPersonal\Codegym\module3\ToKhaiYte\ToKhaiYte\bin\Debug\netcoreapp3.1\libman.json
+C:\DataPersonal\Codegym\module3\ToKhaiYte\ToKhaiYte\obj\Debug\netcoreapp3.1\Razor\Views\Home\Danhsach.cshtml.g.cs
+C:\DataPersonal\Codegym\module3\ToKhaiYte\ToKhaiYte\obj\Debug\netcoreapp3.1\Razor\Views\Home\ChitietToKhai.cshtml.g.cs

@@ -28,8 +28,7 @@ namespace ToKhaiYte.Models.ViewModel
         [Display(Name = "Số CMND"), MaxLength(200)]
         public string SoCMND { get; set; }
 
-        [Required, MaxLength(300)]
-        public string PhuongTienDiLai { get; set; }
+      
         [Required, MaxLength(100)]
         public string SoHieuPhuongTien { get; set; }
         [Required, MaxLength(50)]
@@ -46,10 +45,7 @@ namespace ToKhaiYte.Models.ViewModel
         public int ThangDen { get; set; }
         [Required]
         public int NamDen { get; set; }
-        //[Required]
-        //public DateTime NgayKhoiHanh { get; set; }
-        //[Required]
-        //public DateTime NgayNhapCanh { get; set; }
+     
         [Required]
         public int QuocGiaKhoiHanh { get; set; }
         [Required, MaxLength(100)]
@@ -107,6 +103,16 @@ namespace ToKhaiYte.Models.ViewModel
         public List<TinhThanh> tinhthanhs { get; set; }
         public List<QuanHuyen> quanhuyens { get; set; }
         public List<PhuongXa> phuongxas { get; set; }
+        [MaxLength(20)]
+        public string taubay  { get; set; }
+        [MaxLength(20)]
+        public string tauthuyen { get; set; }
+        [MaxLength(20)]
+        public string oto { get; set; }
+        [MaxLength(20)]
+        public string phuongtienkhac { get; set; }
+        [MaxLength(20)]
+        public string khac { get; set; }
         public DangKyToKhai()
         {
             cuakhaus = new List<CuaKhau>();

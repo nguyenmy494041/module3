@@ -1,0 +1,134 @@
+﻿@model ChitietToKhai
+@inject AppDbContext context
+@{
+    ViewBag.Title = "thông tin chi tiết tờ khai";
+    var quocgiaden = context.QuocGia.FirstOrDefault(e => e.QuocGiaId == Model.QuocGiaDen).TenQuocGia;
+    var quocgiakhoihanh = context.QuocGia.FirstOrDefault(e => e.QuocGiaId == Model.QuocGiaKhoiHanh).TenQuocGia;
+
+}
+
+<br />
+<div>
+    <h3>Thông tin cá nhân</h3><br />
+
+    <div class=" row">  <b class=" col-3"> Họ tên:</b><p class=" col-6"> @Model.Hoten</p></div>
+    <div class=" row">  <b class=" col-3"> Năm sinh:</b><p class=" col-6"> @Model.Namsinh</p></div>
+    <div class=" row">  <b class=" col-3"> Giới tính: </b><p class=" col-6"> @Model.Gioitinh</p></div>
+    <div class=" row">  <b class=" col-3">Quốc tịch: </b><p class=" col-6"> @Model.Quoctich</p></div>
+    <div class=" row">  <b class=" col-3">  Số hộ chiếu hoặc giấy thông hành hợp pháp khác: </b><p class=" col-6"> @Model.SoCMND</p></div>
+    <div class=" row">  <b class=" col-3"> Nhập cảnh tại cửa khẩu:</b><p class=" col-6"> @Model.TenCuaKhau</p></div>
+    <div class=" row">  <b class=" col-3"> Số điện thoại:</b><p class=" col-6"> @Model.SoDienThoai</p></div>
+    <div class=" row">  <b class=" col-3"> Email:</b><p class=" col-6"> @Model.Email</p></div>
+    <p><i>Hiện đang cư trú tại:</i></p>
+    <div class=" row">  <b class=" col-3"> Số nhà, tên đường:</b><p> @Model.SoNha</p></div>
+    <div class=" row">  <b class=" col-3"> Phường/Xã:</b><p class=" col-6"> @Model.PhuongXa</p></div>
+    <div class=" row">  <b class=" col-3"> Quận/Huyện:</b><p class=" col-6"> @Model.QuanHuyen</p></div>
+    <div class=" row">  <b class=" col-3"> Tỉnh/Thành phố:</b><p class=" col-6"> @Model.TinhThanh</p></div>
+    <div class=" row">  <b class=" col-3"> Danh sách vắc-xin hoặc sinh phẩm đã sử dụng:</b><p class=" col-6"> @Model.DanhSachVacxin</p></div>
+</div>
+
+<hr />
+
+<div>
+    <h3>Thông tin di chuyển</h3><br />
+    <div class=" row">  <b class=" col-3"> Phương tiện di chuyển:</b><p class=" col-6"> @Model.PhuongTienDiLai</p></div>
+    <div class=" row">  <b class=" col-3"> Số hiệu phương tiện:</b><p class=" col-6"> @Model.SoHieuPhuongTien</p></div>
+    <div class=" row">  <b class=" col-3"> Số ghế:</b><p class=" col-6"> @Model.SoGhe</p></div>
+    <div class=" row">  <b class=" col-3"> Ngày khởi hành:</b><p class=" col-6"> @Model.NgayKhoiHanh.ToString("dd-MM-yyyy")</p></div>
+    <div class=" row">  <b class=" col-3"> Khởi hành từ:</b><p class=" col-6"> @Model.TinhKhoiHanh, @quocgiakhoihanh</p></div>
+
+    <div class=" row">  <b class=" col-3"> Ngày nhập cảnh:</b><p class=" col-6"> @Model.NgayNhapCanh.ToString("dd-MM-yyyy")</p></div>
+    <div class=" row">  <b class=" col-3"> Nơi đến:</b><p class=" col-6"> @Model.TinhDen, @quocgiaden</p></div>
+    <div class=" row">  <b class=" col-3"> Những nơi đã đi qua:</b><p class=" col-6"> @Model.NoiTungDen</p></div>
+
+
+</div>
+<hr />
+<div>
+    <h3>Thông tin sức khỏe</h3><br />
+    <div class=" row">
+        <b class=" col-3"> Sốt:</b><p class=" col-6">
+            @if (Model.Sot)
+            {<i class="far fa-check-square"></i>
+            }
+            else
+            {
+                <i class="far fa-square"></i>
+            }
+        </p>
+    </div>
+    <div class=" row">
+        <b class=" col-3"> Ho:</b><p class=" col-6">
+            @if (Model.Ho)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+    <div class=" row">
+        <b class=" col-3"> Khó thở:</b><p class=" col-6">
+            @if (Model.KhoTho)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+    <div class=" row">
+        <b class=" col-3"> Đau họng:</b><p class=" col-6">
+            @if (Model.DauHong)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+    <div class=" row">
+        <b class=" col-3"> Nôn/ Buồn nôn:</b><p class=" col-6">
+            @if (Model.BuonNon)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+
+    <div class=" row">
+        <b class=" col-3"> Tiêu chảy:</b><p class=" col-6">
+            @if (Model.TieuChay)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+    <div class=" row">
+        <b class=" col-3"> Xuất huyết ngoài da:</b><p class=" col-6">
+            @if (Model.XuatHuyetNgoaiDa)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+    <div class=" row">
+        <b class=" col-3"> Nổi ban ngoài da:</b><p class=" col-6">
+            @if (Model.NoiBanNgoaiDa)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+    <div class=" row">
+        <b class=" col-3"> Tiếp xúc với động vật:</b><p class=" col-6">
+            @if (Model.TiepXucDongVat)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+    <div class=" row">
+        <b class=" col-3"> Tiếp xúc người bệnh:</b><p class=" col-6">
+            @if (Model.TiepXucNguoiBenh)
+            {<i class="far fa-check-square"></i>}
+            else
+            {<i class="far fa-square"></i>}
+        </p>
+    </div>
+</div>
+

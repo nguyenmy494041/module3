@@ -93,9 +93,17 @@ namespace ToKhaiYte.Controllers
 
         public IActionResult Danhsach()
         {
-            //var result = 
-            return View();
+            var result = services.LaydanhSachToKhai();
+            return View(result.ToList());
 
+        }
+
+        public IActionResult ChitietToKhai(int id)
+        {
+            var result = services.LayChiTietToKhai().ToList();
+            
+            var tokhai = result.FirstOrDefault(e => e.STT == id);
+            return View(tokhai);
         }
     }
 }

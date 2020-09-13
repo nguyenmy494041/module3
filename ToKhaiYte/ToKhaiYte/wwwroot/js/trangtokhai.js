@@ -66,17 +66,3 @@ dangky.chonvietnam = function () {
 
 }
 
-dangky.laygiatrichecbox = function () {
-
-    var checkbox = document.getElementsByName('PhuongTienDiLai');
-    var result = "";
-
-    // Lặp qua từng checkbox để lấy giá trị
-    for (var i = 0; i < checkbox.length; i++) {
-        if (checkbox[i].checked === true) {
-            result +=  checkbox[i].value + ' ';
-        }
-    }
-    document.getElementById('PhuongTienDiLai').value = result;
-
-}

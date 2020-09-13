@@ -15,7 +15,8 @@ namespace ToKhaiYte.Services
         List<QuanHuyen> LayDanhSachQuanHuyen(int idTinh);
         List<PhuongXa> LayDanhSachPhuongXa(int idQuanHuyen, int idTinh);
         int TaoMoiToKhai(DangKyToKhai tokhai);
-        ICollection<DangKyToKhai> LaydanhSachToKhai();
-       
+        IEnumerable<HienThiToKhai> LaydanhSachToKhai();
+        IEnumerable<ChitietToKhai> LayChiTietToKhai();
+
     }
 }

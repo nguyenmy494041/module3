@@ -1,0 +1,69 @@
+﻿@model List<HienThiToKhai>
+@{
+    ViewBag.Title = "Danh sách các tờ khai";
+}
+
+<table id="dataTable" class=" table table-bordered table-hover mt-3">
+    <thead class=" thead-light">
+        <tr>
+            <th>STT</th>
+            <th>Họ tên</th>
+            <th>Giới tính</th>
+            <th>Quốc tịch</th>
+            <th>Cửa khẩu</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>&nbsp; &nbsp; &nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.STT</td>
+                <td>@item.HoTen</td>
+                <td>@item.GioiTinh</td>
+                <td>@item.QuocTich</td>
+                <td>@item.CuaKhau</td>
+                <td>@item.SoDienThoai</td>
+                <td>@item.Diachi</td>
+                <td><a asp-controller="Home" asp-action="ChitietToKhai" asp-route-id="@item.STT">chi tiết</a></td>
+            </tr>
+
+
+        }
+
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').dataTable(
+                {
+                    "columnDefs": [
+                        {
+                            "targets": 2,
+                            "orderable": false
+                        },
+                        {
+                            "targets": 7,
+                            "orderable": false
+                        },
+                        {
+                            "targets": 5,
+                            "orderable": false
+                        },
+                        {
+                            "targets": 6,
+                            "orderable": false
+                        },
+                    ]
+                }
+            );
+        });
+    </script>
+}
+
