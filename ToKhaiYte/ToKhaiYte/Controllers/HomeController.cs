@@ -59,7 +59,7 @@ namespace ToKhaiYte.Controllers
                 var result = services.TaoMoiToKhai(tokhai);
                 if (result > 0)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Privacy", "Home");
                 }
                 ModelState.AddModelError("", "System error, please try again later!");
             }
