@@ -91,7 +91,7 @@ namespace ToKhaiYte.Services
         {
             var tokhai = new ToKhai()
             {
-                Hoten = dangkytokhai.Hoten,
+                Hoten = (dangkytokhai.Hoten).ToUpper(),
                 Namsinh = dangkytokhai.Namsinh,
                 Gioitinh = dangkytokhai.Gioitinh,
                 Quoctich = dangkytokhai.Quoctich,

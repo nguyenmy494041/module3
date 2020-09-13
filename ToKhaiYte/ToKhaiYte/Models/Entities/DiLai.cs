@@ -12,11 +12,11 @@ namespace ToKhaiYte.Models.Entities
         [Key]
         public int DiLaiId { get; set; }
 
-        [Required, MaxLength(300)]
+        [Required, MaxLength(110)]
         public string PhuongTienDiLai { get; set; }
-        [Required, MaxLength(100)]
+        [Required, MaxLength(30)]
         public string SoHieuPhuongTien { get; set; }
-        [Required, MaxLength(50)]
+        [Required, MaxLength(20)]
         public string SoGhe { get; set; }
         [Required]
         public DateTime NgayKhoiHanh { get; set; }
@@ -24,13 +24,13 @@ namespace ToKhaiYte.Models.Entities
         public DateTime NgayNhapCanh { get; set; }
         [Required]
         public int QuocGiaKhoiHanh { get; set; }
-        [Required, MaxLength(100)]
+        [Required, MaxLength(50)]
         public string TinhKhoiHanh { get; set; }
         [Required]
         public int QuocGiaDen { get; set; }
         [Required]
         public int TinhDen { get; set; }
-        [Required, MaxLength(500)]
+        [Required, MaxLength(200)]
         public string NoiTungDen { get; set; }
         [Required]
         [ForeignKey("ToKhai")]

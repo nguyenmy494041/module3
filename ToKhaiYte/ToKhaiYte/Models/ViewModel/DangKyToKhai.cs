@@ -25,13 +25,13 @@ namespace ToKhaiYte.Models.ViewModel
         [Display(Name = "Quốc tịch")]
         public int Quoctich { get; set; }
         [Required(ErrorMessage = "Chưa điền thông tin")]
-        [Display(Name = "Số CMND"), MaxLength(200)]
+        [Display(Name = "Số CMND"), MaxLength(50)]
         public string SoCMND { get; set; }
 
       
-        [Required, MaxLength(100)]
+        [Required, MaxLength(25)]
         public string SoHieuPhuongTien { get; set; }
-        [Required, MaxLength(50)]
+        [Required, MaxLength(20)]
         public string SoGhe { get; set; }
         [Required]
         public int NgayDi { get; set; }
@@ -48,13 +48,13 @@ namespace ToKhaiYte.Models.ViewModel
      
         [Required]
         public int QuocGiaKhoiHanh { get; set; }
-        [Required, MaxLength(100)]
+        [Required, MaxLength(50)]
         public string TinhKhoiHanh { get; set; }
         [Required]
         public int QuocGiaDen { get; set; }
         [Required]
         public int TinhDen { get; set; }
-        [Required, MaxLength(500)]
+        [Required, MaxLength(200)]
         public string NoiTungDen { get; set; }
 
         [Required]        
@@ -66,7 +66,7 @@ namespace ToKhaiYte.Models.ViewModel
         [Required]
         public int PhuongXaId { get; set; }
 
-        [Required, MaxLength(150)]
+        [Required, MaxLength(50)]
         public string SoNha { get; set; }
         [Required, MaxLength(13)]
         [RegularExpression(@"(09[0|1|2|3|4|6|7|8|9]|08[1|2|3|4|5|6|8|9]|07[0|6|7|8|9]|03[2|3|4|5|6|7|8|9]|05[6|8|9])+([0-9]{7})\b")]
@@ -111,7 +111,7 @@ namespace ToKhaiYte.Models.ViewModel
         public string oto { get; set; }
         [MaxLength(20)]
         public string phuongtienkhac { get; set; }
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string khac { get; set; }
         public DangKyToKhai()
         {
