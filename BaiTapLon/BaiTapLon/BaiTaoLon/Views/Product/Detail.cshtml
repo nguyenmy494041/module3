@@ -1,18 +1,24 @@
 ﻿@model BaiTapLon.Models.ProductManagement.Product
+@inject BaiTapLon.Models.Contexts.AppDbContext context
 @{
     ViewBag.Title = $"{@Model.ProductName}";
     var result = Model.Images.ToList();
     var info = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+    var listsanpham = context.Products.Where(e => e.CategoryId == Model.CategoryId && e.ProductId != Model.ProductId).ToList();
+    var lengthsp = (listsanpham.Count >= 4) ? 4 : listsanpham.Count;
 }
 
 @*@Html.Raw(Model.Description.Replace("\r\n", "<br />"))*@
 
-<h2 class=" mt-4">@Model.ProductName </h2>
+<div class=" row">
+    <h2 class=" mt-4 text-info ">@Model.ProductName &nbsp;&nbsp;</h2>
+    <span class="text-primary mt-4"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></span>
+</div>
 <br />
 <div class=" row">
 
-    <div class=" col-sm-5">
-        <div id="carouselExampleInterval" class="carousel slide my-2 border border-secondary" data-ride="carousel">
+    <div class=" col-sm-5 ">
+        <div id="carouselExampleInterval" class="carousel slide my-2 border border-secondary rounded bg-light" data-ride="carousel">
             <div class="carousel-inner">
 
                 @for (int i = 0; i < result.Count; i++)
@@ -43,7 +49,6 @@
             </a>
         </div>
         <div class="row">
-
             <p class="btn btn-outline-info" style=" color: Highlight; margin:auto" data-toggle="modal" data-target="#exampleModal">
                 Xem thông <br />số kỹ thuật
             </p>
@@ -54,47 +59,47 @@
 
     @*<div class=" col-sm-1"></div>*@
 <div class=" col-sm-4" style="line-height: 12px">
-    <p>
-        Giá sản phẩm: <b style=" color:red; font-size: 25px;">@String.Format(info, "{0:#,##0 đ}", Model.ProductPrice)</b>&nbsp;&nbsp;
-        <sup class=" btn btn-sm btn-warning" style="font-size:10px; height:22px;">Trả góp 0%</sup>
-    </p>
-    <p>Trạng thái: <b style=" color:green">CÒN HÀNG</b></p>
+    <div class=" bg-light mt-3 container">
+        <p class=" mt-3">
+            Giá sản phẩm: <b style=" color:red; font-size: 25px;">@String.Format(info, "{0:#,##0 đ}", Model.ProductPrice)</b>&nbsp;
+            <sup class=" btn btn-sm btn-warning" style="font-size:10px; height:22px;">Trả góp 0%</sup>
+        </p>
+        <p>Trạng thái: <b style=" color:green">CÒN HÀNG</b></p>
+        @if (DateTime.Now.Hour <= 12)
+        {
+            <p style=" color:green">Giao hàng <b> &nbsp;Từ 16h - 18h hôm nay (@DateTime.Now.ToString("dd-MM"))</b></p>
+        }
+        else
+        {
+            <p style=" color:green">Giao hàng <b> &nbsp;Từ 10h - 12h ngày mai (@DateTime.Now.AddDays(1).ToString("dd-MM"))</b></p>
+        }
+        <p style=" color:green">Miễn phí giao hàng</p><br />
 
-    @if (DateTime.Now.Hour <= 12)
-    {
-        <p style=" color:green">Giao hàng <b> &nbsp;Từ 16h - 18h hôm nay (@DateTime.Now.ToString("dd-MM"))</b></p>
-    }
-    else
-    {
-        <p style=" color:green">Giao hàng <b> &nbsp;Từ 10h - 12h ngày mai (@DateTime.Now.ToString("dd-MM"))</b></p>
-    }
 
+        <a style="line-height: 10px" class="btn btn-success btn-lg btn-block"><p><b>MUA NGAY</b><div style=" font-size:15px">Hàng chính hãng 100%</div></p></a>
+        <a style="line-height: 10px" class="btn btn-info btn-lg btn-block"><p><b>MUA TRẢ GÓP 0%</b><div style=" font-size:15px">Thủ tục đơn giản</div></p></a>
+        <br /><b>Gói trả góp 0% phổ biến nhất</b>
 
+        <ul style="line-height: 25px">
+            <li>Góp <b>@String.Format(info, "{0:#,##0 đ}", Math.Round((Model.ProductPrice * 0.7 * 1.01 / 6) / 1000, 0) * 1000)</b>/tháng trong <b>6</b> tháng </li>
+            <li>Trả trước <b>@String.Format(info, "{0:#,##0 đ}", Math.Round((Model.ProductPrice * 0.3) / 1000, 0) * 1000)</b>(30%) </li>
+        </ul>
+    </div>
 
-    <p style=" color:green">Miễn phí giao hàng</p><br />
-    <a style="line-height: 10px" class="btn btn-success btn-lg btn-block"><p><b>MUA NGAY</b><div style=" font-size:15px">Hàng chính hãng 100%</div></p></a>
-    <a style="line-height: 10px" class="btn btn-info btn-lg btn-block"><p><b>MUA TRẢ GÓP 0%</b><div style=" font-size:15px">Thủ tục đơn giản</div></p></a>
-    <br /><b>Gói trả góp 0% phổ biến nhất</b>
-
-    <ul style="line-height: 25px">
-        <li>Góp <b>@String.Format(info, "{0:#,##0 đ}", Math.Round((Model.ProductPrice * 0.7 * 1.01 / 6) / 1000, 0) * 1000)</b>/tháng trong <b>6</b> tháng </li>
-        <li>Trả trước <b>@String.Format(info, "{0:#,##0 đ}", Math.Round((Model.ProductPrice * 0.3) / 1000, 0) * 1000)</b>(30%) </li>
-    </ul>
 </div>
 
-    <div class="col-sm-3">
-        <div class="border border-dark container rounded">
-            <div style="text-align:center"><b>MUA NHƯ VUA - CHĂM SÓC NHƯ VIP</b></div>
-            <hr />
-            <div><b>100% hàng chính hãng</b></div>
-            <hr />
-            <div>Lỗi là đổi mới trong <b>1 tháng</b> tận nhà.</div><hr />
-            <div>Bảo hành cực dễ chỉ cần <b>số điện thoại</b></div><hr />
-            <div>Bảo hành <b>chính hãng thân máy 2 năm</b></div><hr />
-            <div>Giao hàng miện phí và nhanh chóng</div><hr />
-            <div>Bảo hành Động cơ: 2 năm chính hãng</div>
-        </div>
-    </div>
+<div class="col-sm-3">
+   
+
+    <ul class="list-group border border-secondary rounded text-success">
+        <li class="list-group-item"> <div style="text-align:center"><b>MUA NHƯ VUA - CHĂM SÓC NHƯ VIP</b></div></li>
+        <li class="list-group-item"> <div>Lỗi là đổi mới trong <b>1 tháng</b> tận nhà.</div></li>
+        <li class="list-group-item"><div>Bảo hành cực dễ chỉ cần <b>số điện thoại</b></div></li>
+        <li class="list-group-item"><div>Bảo hành <b>chính hãng thân máy 2 năm</b></div></li>
+        <li class="list-group-item"><div>Giao hàng miện phí và nhanh chóng</div></li>
+        <li class="list-group-item"> <div>Bảo hành Động cơ: 2 năm chính hãng</div></li>
+    </ul>
+</div>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -173,4 +178,55 @@
             </div>
         </div>
     </div>
+</div>
+
+
+@*các sản phẩm tương tự*@
+
+
+<div>
+    <hr />
+    <h3>Các sản phẩm tương tự</h3>
+    @for (int i = 0; i < lengthsp; i++)
+    {
+        <div class=" col-sm-3">
+
+            <div class=" card my-3 text-center">
+                <a asp-controller="Product" asp-action="Detail" asp-route-id="@listsanpham[i].ProductId">
+                    <div class=" card">
+                        <div class=" card-header">
+                            <h6>@listsanpham[i].ProductName</h6>
+                        </div>
+                        <img src="@Url.Content("~/images/"+ listsanpham[i].Images.First().ImageName)" class="card-img-top" alt="Alternate Text" height="225" asp-append-version="true" />
+                        <div class=" card-footer">
+                            <h5 style="color: red"> @listsanpham[i].ProductPrice </h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    }
+<hr />
+</div>
+
+@*thông tin chi tiết sản phẩm*@
+
+<div class=" row">
+    <div class=" col-9">
+        @Html.Raw(Model.Description.Replace("\r\n", "<br />"))ay    </div>
+    <div class=" col-3">
+        <ul class="list-group">
+            <li class="list-group-item active">Thông tin sản phẩm</li>
+            <li class="list-group-item"> <b>Công suất</b>: @Model.Wattage W</li>
+            <li class="list-group-item"><b>Chức năng</b>: @Model.Specification.Dynamic</li>
+            <li class="list-group-item"><b>Điều khiển</b>: @Model.Specification.Control</li>
+            <li class="list-group-item"><b>Phạm vi làm mát</b>: @Model.Specification.CollingRange</li>
+            <li class="list-group-item"><b>Độ ồn</b>: @Model.Specification.Noiselevel</li>
+            <li class="list-group-item"><b>Tiện ích</b>: @Model.Utilities</li>
+            <li class="list-group-item"><b>Sản xuất tại</b>: @Model.MadeIn</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+    </div>
+
+
 </div>

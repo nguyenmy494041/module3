@@ -33,6 +33,10 @@
     {
       "library": "datatables.net@1.10.21",
       "destination": "wwwroot/lib/datatablenet"
+    },
+    {
+      "library": "font-awesome@5.14.0",
+      "destination": "wwwroot/lib/font-awesome/"
     }
   ]
 }
