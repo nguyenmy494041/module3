@@ -1,0 +1,91 @@
+﻿@model List<HocVien>
+@{
+    ViewData["Title"] = "ShowFilter";
+    var malop = ViewBag.malop as HocVien;
+}
+
+<a class="btn btn-success" asp-controller="Home" asp-action="ThemMoiHocVien" asp-route-id="@malop.MaLop">Thêm học sinh</a>
+<br />
+<h3 class=" text-center text-danger">Danh sách học viên</h3>
+<br />
+<input type="hidden" asp-for="@malop.MaLop"  id="malop"/>
+<table id="dataTable" class=" table table-bordered table-hover mt-3">
+    <thead class=" thead-light">
+        <tr>
+            <th>Mã học viên</th>
+            <th>Tên học viên</th>
+            <th>Giới tính </th>
+            <th>Email</th>
+            <th>Lớp</th>
+            <th>Thao tác </th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.MaHocVien</td>
+                <td>@item.HoTen</td>
+                <td>@item.GioiTinh</td>
+                <td>@item.Email</td>
+                <td>@item.Lophoc.TenLop</td>
+
+                <td>
+                    <a class=" btn btn-danger" asp-controller="Home" asp-action="Xemchitiet" asp-route-id="@item.MaHocVien">Xem chi tiết</a>
+                    <a class=" btn btn-danger" asp-controller="Home" asp-action="ThayDoiThongTin" asp-route-id="@item.MaHocVien">Sửa</a>
+                    <a class=" btn btn-danger" href="javascript:void(0)" onclick="filter.delete('@item.MaHocVien')">Xóa</a>
+
+
+                    @*<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#gia-@item.ProductPrice">
+                            Delete
+                        </button>
+                        <div class="modal" id="gia-@item.ProductPrice">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header ">
+                                        <h2 class="modal-title" style="margin: auto;color: red">Xóa thương hiệu</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6> Are you sure you want to delete Role "@item.ProductName" ?</h6>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Yes</a>
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                </td>
+
+            </tr>
+
+
+        }
+
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').dataTable(
+                {
+                    "columnDefs": [
+                        {
+                            "targets": 7,
+                            "orderable": false
+                        },
+
+                    ]
+                }
+            );
+        });
+    </script>
+    <script src="~/lib/bootbox/bootbox.js"></script>
+   
+    <script src="~/js/Xoahocsinh.js"></script>
+}
+

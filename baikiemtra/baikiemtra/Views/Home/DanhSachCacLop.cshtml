@@ -1,0 +1,43 @@
+﻿@model List<LopHoc>
+@{
+    ViewBag.Title = "Danh sách các lớp";
+}
+<br />
+<h3 class=" text-center text-danger">Danh sách các Lớp</h3>
+<br />
+<table id="dataTable" class=" table table-bordered table-hover mt-3">
+    <thead class=" thead-light">
+        <tr>          
+            <th>Mã lớp</th>
+            <th>Tên lớp </th>
+            <th>Danh sách học sinh </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.MaLop</td>
+                <td>@item.TenLop</td>              
+                <td> <a asp-controller="Home" asp-action="DanhSachHocSinh" asp-route-id="@item.MaLop" class=" btn btn-danger">Danh sách học sinh</a></td>
+            </tr>
+
+
+        }
+
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').dataTable(
+                
+            );
+        });
+    </script>
+    <script src="~/lib/bootbox/bootbox.js"></script>
+  
+}
