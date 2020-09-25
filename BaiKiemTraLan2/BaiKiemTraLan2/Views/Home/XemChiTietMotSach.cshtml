@@ -1,0 +1,16 @@
+﻿@model Book
+@{
+    ViewBag.Title = "Xem sach";
+}
+
+<h2>Thông tin chi tiết đầu sách</h2>
+<br />
+<p>Mã sách: @Model.MaSach</p>
+<p>Tên ách: @Model.TenSach</p>
+<p>Tên tác giả: @Model.TenTacGia</p>
+<p>Mô tả: @Model.MoTa</p>
+<p>Thể loại: @Model.TheLoai.TenTheLoai</p>
+<p>Năm xuất bản: @Model.NamXuatBan</p>
+<p>Sô lượng: @Model.Soluong</p>
+<br />
+<a class=" btn btn-primary" asp-controller="Home" asp-action="XemChiTiet" asp-route-id="@Model.MaTheLoai">Trở về</a>

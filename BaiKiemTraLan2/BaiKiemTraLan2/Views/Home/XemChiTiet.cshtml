@@ -1,0 +1,78 @@
+﻿@model List<Book>
+
+@{
+    ViewData["Title"] = "ShowFilter";
+    var matheloai = ViewBag.matheloai as Book;
+}
+
+<a class="btn btn-success" asp-controller="Home" asp-action="ThemMoiSach" asp-route-id="@matheloai.MaTheLoai">Thêm mới sách</a>
+<br />
+<h3 class=" text-center text-danger">Danh sách các đầu sách trong thể loại</h3>
+<br />
+
+@*chỗ để lấy được mã lớp*@
+<input type="hidden" asp-for="@matheloai.MaTheLoai" id="malop" />
+
+
+
+<table id="dataTable1" class=" table table-bordered table-hover mt-3">
+    <thead class=" thead-light">
+        <tr>
+            <th>Mã sách</th>
+            <th>Tên sách</th>
+            <th>Tên tác giả</th>
+            <th>Năm suất bản</th>
+            <th>Thể loại</th>
+            <th>Thao tác </th>
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@item.MaSach</td>
+                <td>@item.TenSach</td>
+                <td>@item.TenTacGia</td>
+                <td>@item.NamXuatBan</td>
+                <td>@item.TheLoai.TenTheLoai</td>
+
+                <td>
+                    <a class=" btn btn-danger" asp-controller="Home" asp-action="XemChiTietMotSach" asp-route-id="@item.MaSach">Xem chi tiết</a>
+                    <a class=" btn btn-danger" asp-controller="Home" asp-action="ThayDoiThongTin" asp-route-id="@item.MaSach">Sửa thông tin</a>
+                    <a class=" btn btn-danger" href="javascript:void(0)" onclick="filter.delete('@item.MaSach')">Xóa</a>
+
+
+                </td>
+
+            </tr>
+
+
+        }
+
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#dataTable1').dataTable(
+                {
+                    "columnDefs": [
+                        {
+                            "targets": 7,
+                            "orderable": false
+                        },
+
+                    ]
+                }
+            );
+        });
+    </script>
+    <script src="~/lib/bootbox/bootbox.js"></script>
+    <script src="~/js/xoa.js"></script>
+   
+}
+
