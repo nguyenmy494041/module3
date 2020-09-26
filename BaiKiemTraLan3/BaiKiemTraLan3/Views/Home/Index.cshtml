@@ -1,0 +1,47 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<br />
+<h3 class=" text-center text-danger">Danh sách các loại bánh</h3>
+<br />
+<table id="dataTable" class=" table table-bordered table-hover mt-3">
+    <thead class=" thead-light">
+        <tr>
+
+            <th>Mã thể loai</th>
+            <th>Tên loại bánh </th>
+            <th>Xem chi tiết</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)     
+      
+        {
+        <tr>
+          
+            <td>@item.MaTheLoai</td>
+        <td>@item.TenTheLoai </td>
+
+            <td>
+                <a asp-controller="Home" asp-action="XemChiTiet" asp-route-id="@item.MaTheLoai" class=" btn btn-danger">Danh sách bánh</a>
+            </td>         
+
+        </tr>
+
+        }
+
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').dataTable(
+            );
+        });
+    </script>
+    <script src="~/lib/bootbox/bootbox.js"></script>
+
+}

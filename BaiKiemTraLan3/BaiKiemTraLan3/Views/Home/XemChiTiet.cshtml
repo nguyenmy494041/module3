@@ -1,0 +1,64 @@
+﻿@model List<Cake>
+
+@{
+    ViewData["Title"] = "Sem chi tiết";
+    var matheloai = ViewBag.matheloai as Cake;
+}
+
+<a class="btn btn-success" asp-controller="Home" asp-action="ThemMoiBanh" asp-route-id="@matheloai.MaTheLoai">Thêm mới Bánh</a>
+<a style="float:right" class="btn btn-success" asp-controller="Home" asp-action="Index" >Trở về</a>
+<br />
+<h3 class=" text-center text-danger">Danh sách các bánh</h3>
+<br />
+
+<input type="hidden" asp-for="@matheloai.MaTheLoai" id="malop" />
+
+<table id="dataTable" class=" table table-bordered table-hover mt-3">
+    <thead class=" thead-light">
+        <tr>
+
+            <th>Mã bánh</th>
+            <th>Tên bánh</th>
+            <th>Thành phần</th>
+            <th>Giá bán</th>
+            <th>Thể loại</th>
+            <th>Thao tác </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+
+        {
+            <tr>
+                <td>@item.MaBanh</td>
+                <td>@item.TenBanh</td>
+                <td>@item.ThanhPhan</td>
+                <td>@item.GiaBan</td>
+                <td>@item.TheLoai.TenTheLoai</td>
+
+                <td>
+                    <a class=" btn btn-danger" asp-controller="Home" asp-action="XemChiTietMotBanh" asp-route-id="@item.MaBanh">Xem chi tiết</a>
+                    <a class=" btn btn-danger" asp-controller="Home" asp-action="ThayDoiThongTin" asp-route-id="@item.MaBanh">Sửa thông tin</a>
+                    @*<a class=" btn btn-danger" asp-controller="Home" asp-action="XoaSach" asp-route-id="@item.MaSach">Xóa</a>*@
+                    <a class=" btn btn-danger" href="javascript:void(0)" onclick="filter.delete('@item.MaBanh')">Xóa</a>
+                   
+                </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').dataTable(
+            );
+        });
+    </script>
+    <script src="~/lib/bootbox/bootbox.js"></script>
+    <script src="~/js/xoa.js"></script>
+
+}

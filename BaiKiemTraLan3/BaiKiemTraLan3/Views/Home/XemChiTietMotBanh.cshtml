@@ -1,0 +1,16 @@
+﻿@model Cake
+@{
+    ViewBag.Title = "Xem chi tiết bánh";
+}
+
+<h2>Thông tin chi tiết bánh</h2>
+<br />
+<p>Mã bánh: @Model.MaBanh</p>
+<p>Tên bánh: @Model.TenBanh</p>
+<p>Thành phần: @Model.ThanhPhan</p>
+<p>Hạn sử dụng: @Model.HanSuDung</p>
+<p>Ngày sản xuất:@Model.NgaySanXuat.ToString("dd/MM/yyyy") </p>
+<p>Giá bán: @Model.GiaBan</p>
+<p>Thể loại: @Model.TheLoai.TenTheLoai</p>
+<br />
+<a class=" btn btn-primary" asp-controller="Home" asp-action="XemChiTiet" asp-route-id="@Model.MaTheLoai">Trở về</a>
